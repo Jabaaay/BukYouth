@@ -19,9 +19,13 @@ class YouthController extends Controller
      */
     public function create()
     {
-        //
+        return view('youth.create');
     }
 
+    public function createSk()
+    {
+        return view('youth.create-sk');
+    }
     /**
      * Store a newly created resource in storage.
      */

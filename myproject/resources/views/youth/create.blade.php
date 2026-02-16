@@ -58,41 +58,62 @@
           </p>
         </div>
 
+<div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-dark shadow-dark border-radius-lg pt-4 pb-3 d-flex align-items-center justify-content-between px-3">
+                        <h6 class="text-white text-capitalize m-0">Add Local Youth Development Officer</h6>
+                    </div>
+                </div>
+                <div class="card-body px-4 pb-4">
+                    <form action="" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="student_id" class="form-label">Name (LYDO)</label>
+                            <input type="text" name="student_id" id="student_id" class="form-control border" value="{{ old('student_id') }}" required>
+                        </div>
 
-<div class="container-fluid py-2">
-  <div class="row">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" name="email" id="email" class="form-control border" value="{{ old('email') }}" required>
+                        </div>
 
-    <!-- Card 1: Add LYDO -->
-    <div class="col-md-6 mb-4">
-      <div class="card shadow-sm border-0">
-        <div class="card-body text-center">
-          <h4 class="card-title mb-3">LYDO</h4>
-          <p class="card-text text-muted">
-            Add Local Youth Development Officer
-          </p>
-          <a href="{{ route('youth.create') }}" class="btn btn-outline-primary w-100">
-            Add LYDO
-          </a>
+
+                      
+
+                         <div class="mb-3">
+                            <label for="student_id" class="form-label">Facebook Page (Optional)</label>
+                            <input type="text" name="student_id" id="student_id" class="form-control border" value="{{ old('student_id') }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="student_id" class="form-label">Number of Register in LYDC</label>
+                            <input type="text" name="student_id" id="student_id" class="form-control border" value="{{ old('student_id') }}" required>
+                        </div>
+
+                    <div class="mb-3">
+                            <label for="address" class="form-label">Local Youth Development Plan</label>
+                            <textarea name="address" id="address" class="form-control border" required>{{ old('address') }}</textarea>
+                        </div>
+
+                
+
+                        <div class="mb-3">
+                            <label for="section" class="form-label">LYDP Status</label>
+                            <select name="section" id="section" class="form-control border" required>
+                                <option value="">Pending</option>
+                                <option value="">Approved</option>
+                                <option value="">Rejected</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn bg-gradient-dark">Save</button>
+                        <a href="{{ route('youth.index') }}" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-
-    <!-- Card 2: Add SK President -->
-    <div class="col-md-6 mb-4">
-      <div class="card shadow-sm border-0">
-        <div class="card-body text-center">
-          <h4 class="card-title mb-3">SK President</h4>
-          <p class="card-text text-muted">
-            Add Sangguniang Kabataan President
-          </p>
-          <a href="{{ route('youth.create-sk') }}" class="btn btn-outline-success w-100">
-            Add SK President
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
 </div>
 
     

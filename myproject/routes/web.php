@@ -24,6 +24,8 @@ Route::middleware('auth')->group(function () {
 
     // youth routes
     Route::get('/youth', [YouthController::class, 'index'])->name('youth.index');
+    Route::get('/youth/create', [YouthController::class, 'create'])->name('youth.create');
+    Route::get('/youth/create-sk', [YouthController::class, 'createSk'])->name('youth.create-sk');
 
 });
 
