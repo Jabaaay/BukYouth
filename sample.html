@@ -19,7 +19,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-      <link rel="icon" type="image/png" href="../assets/images/image.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
     Material Dashboard 3 by Creative Tim
   </title>
@@ -63,26 +63,12 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-dark shadow-dark border-radius-lg pt-4 pb-3 d-flex align-items-center justify-content-between px-3">
-                        <h6 class="text-white text-capitalize m-0">Add Local SK President</h6>
+                        <h6 class="text-white text-capitalize m-0">Add Local Youth Development Officer</h6>
                     </div>
                 </div>
                 <div class="card-body px-4 pb-4">
-                    <form action="{{ route('youth.store-sk') }}" method="POST">
+                    <form action="{{ route('youth.store') }}" method="POST" >
                         @csrf
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name of SK President</label>
-                            <input type="text" name="name" id="name" class="form-control border" value="{{ old('name') }}" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" name="email" id="email" class="form-control border" value="{{ old('email') }}" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="contact_number" class="form-label">Contact Number</label>
-                            <input type="text" name="contact_number" id="contact_number" class="form-control border" value="{{ old('contact_number') }}" required>
-                        </div>
 
                         <div class="mb-3">
                             <label for="municipality" class="form-label">Municipality</label>
@@ -113,43 +99,21 @@
                             </select>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="brgy" class="form-label">Barangay</label>
-                            <select name="brgy" id="barangay" class="form-control border" required>
-                                <option value="">-- Select Barangay --</option>
-                            </select>
-                        </div>
-                  
+                          <div class="mb-3">
+                                <label for="barangay" class="form-label">Barangay</label>
+                                <select name="brgy" id="barangay" class="form-control border" required>
+                                    <option value="">-- Select Barangay --</option>
+                                </select>
+                            </div>
 
-                        <button type="submit" class="btn bg-gradient-dark">Save</button>
-                        <a href="{{ route('youth.index') }}" class="btn btn-secondary">Cancel</a>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-      </div>
-      
-     
-    </div>
-  </main>
- 
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
     var barangays = {
         "Baungon": ["Balintad", "Buenavista", "Danatag", "Imbatug", "Kalilangan", "Lacolac", "Langaon", "Liboran", "Lingating", "Mabuhay", "Mabunga", "Nicdao", "Pualas", "Salimbalan", "San Miguel", "San Vicente"],
         "Cabanglasan": ["Anlogan", "Cabulohan", "Canangaan", "Capinonan", "Dalacutan", "Freedom", "Iba", "Imbatug", "Jasaan", "Lambangan", "Mandahikan", "Mandaing", "Mauswagon", "Paradise", "Poblacion"],
         "Damulog": ["Aludas", "Angga-an", "Kinapat", "Kiraon", "Kitingting", "Lagandang", "Macapari", "Maican", "Migcawayan", "New Compostela", "Old Damulog", "Omonay", "Poblacion", "Pocopoco", "Sampagar", "San Isidro", "Tangkulan"],
         "Dangcagan": ["Barongcot", "Bugwak", "Dolorosa", "Kapalaran", "Kianggat", "Lourdes", "Macarthur", "Miaray", "Migcuya", "New Visayas", "Osmeña", "Poblacion", "Sagbayan", "San Vicente"],
-        "Don Carlos": ["Bismartz", "Bocboc", "Buyot", "Cabadiangan", "Calaocalao", "Don Carlos Norte", "Doc Carlos Sur", "Embayao", "Kalubihon", "Kasigkot", "Kawilihan", "Kiara", "Kibatang", "Mahayahay", "Manlamonay", "Maraymaray", "Mauswagon", "Minsalagan", "New Nongnongan", "new Visayas", "Old Nongnongan", "Pinamaloy", "Pualas", "San Antonio East", "San Antonoio West", "San Francisco", "San Nicolas", "San Roque", "Sinaysayan", "Sinuda", "Tandong"],
+        "Don Carlos": ["Bismartz", "Bocboc", "Buyot", "Cabadiangan", "Calaocalao", "Don Carlos Norte", "Doc Carlos Sur", "Embayao", "Kalubihon", "Kasigkot", "Kawilihan", "Kiara", "Kibatang", "Mahayahay", "Manlamonay", "Maraymaray", "Mauswagon", "Minsalagan", "New Nongnongan", "new Visayas", "Old Nongnongan", "Pinamaloy", "Pualas", "San Antonio East", "San Antonoio West", "San Francisco", "San Nicolas", "San Roque", "Sinangguyan"],
         "Impasug-ong": ["Bontongon", "Bulonay", "Capitan Bayong", "Cawayan", "Dumalaguing", "Guihe-an", "Hagpa", "Impalutao", "Kalabugao", "Kibenton", "La Fortuna", "Poblacion", "Sayawan"],
         "Kadingilan": [
             "Bagongbayan",
@@ -280,269 +244,272 @@
             "Santa Fe",
             "Sil-ipon"
         ],
-        "Malitbog": [
-            "Kalingking",
-            "Kiabo",
-            "Mindagat",
-            "Omagling",
-            "Patpat",
-            "Poblacion",
-            "Sampiano",
-            "San Luis",
-            "Santa Ines",
-            "Silo-o",
-            "Sumalsag"
+        "Malitbog":
+        [
+        "Kalingking",
+        "Kiabo",
+        "Mindagat",
+        "Omagling",
+        "Patpat",
+        "Poblacion",
+        "Sampiano",
+        "San Luis",
+        "Santa Ines",
+        "Silo-o",
+        "Sumalsag"
         ],
-        "Manolo Fortich": [
-            "Agusan Canyon",
-            "Alae",
-            "Dahilayan",
-            "Dalirig",
-            "Damilag",
-            "Diclum",
-            "Guilang-guilang",
-            "Kalugmanan",
-            "Lindaban",
-            "Lingion",
-            "Lunocan",
-            "Maluko",
-            "Mambatangan",
-            "Mampayag",
-            "Mantibugao",
-            "Minsuro",
-            "San Miguel",
-            "Sankanan",
-            "Santiago",
-            "Santo Niño",
-            "Tankulan",
-            "Ticala"
-        ],
-        "Maramag": [
-            "Anahawon",
-            "Bagongsilang",
-            "Base Camp",
-            "Bayabason",
-            "Camp I",
-            "Colambugan",
-            "Dagumba-an",
-            "Danggawan",
-            "Dologon",
-            "Kiharong",
-            "Kisanday",
-            "Kuya",
-            "La Roxas",
-            "North Poblacion",
-            "Panadtalan",
-            "Panalsalan",
-            "San Miguel",
-            "San Roque",
-            "South Poblacion",
-            "Tubigon"
-        ],
-        "Pangantucan": [
-            "Adtuyon",
-            "Bacusanon",
-            "Bangahan",
-            "Barandias",
-            "Concepcion",
-            "Gandingan",
-            "Kimanait",
-            "Kipadukan",
-            "Langcataon",
-            "Lantay",
-            "Madaya",
-            "Malipayon",
-            "Mendis",
-            "Nabaliwa",
-            "New Eden",
-            "Payad",
-            "Pigtauranan",
-            "Poblacion",
-            "Portulin"
-        ],
-        "Quezon": [
-            "Butong",
-            "Cawayan",
-            "Cebole",
-            "C-Handumanan",
-            "Delapa",
-            "Dumalama",
-            "Kiburiao",
-            "Kipaypayon",
-            "Libertad",
-            "Linabo",
-            "Lipa",
-            "Lumintao",
-            "Magsaysay",
-            "Mahayag",
-            "Manuto",
-            "Merangerang",
-            "Mibantang",
-            "Minongan",
-            "Minsalirak",
-            "Minsamongan",
-            "Paitan",
-            "Palacapao",
-            "Pinilayan",
-            "Poblacion",
-            "Puntian",
-            "Salawagan",
-            "San Isidro",
-            "San Jose",
-            "San Roque",
-            "Santa Cruz",
-            "Santa Filomena"
-        ],
-        "San Fernando": [
-            "Bonacao",
-            "Bulalang",
-            "Cabuling",
-            "Candelaria",
-            "Cayaga",
-            "Dao",
-            "Durian",
-            "Halapitan",
-            "Iglugsad",
-            "Kalagangan",
-            "Kawayan",
-            "Kibongcog",
-            "Little Baguio",
-            "Mabuhay",
-            "Magkalungay",
-            "Malayanan",
-            "Matupe",
-            "Nacabuklad",
-            "Namnam",
-            "Palacpacan",
-            "Sacramento Valley",
-            "San Jose",
-            "Santo Domingo",
-            "Tugop"
-        ],
-        "Sumilao": [
-            "Kisolon",
-            "Kulasi",
-            "Licoan",
-            "Lupiagan",
-            "Ocasion",
-            "Poblacion",
-            "Puntian",
-            "San Roque",
-            "San Vicente",
-            "Vista Villa"
-        ],
-        "Talakag": [
-            "Barangay 1",
-            "Barangay 2",
-            "Barangay 3",
-            "Barangay 4",
-            "Barangay 5",
-            "Basak",
-            "Baylanan",
-            "Cacaon",
-            "Colawingon",
-            "Cosina",
-            "Dagumbaan",
-            "Dagundalahon",
-            "Dominorog",
-            "Indulang",
-            "Lantud",
-            "Lapok",
-            "Liguron",
-            "Lingi-on",
-            "Lirongan",
-            "Miarayon",
-            "Sagaran",
-            "Salucot",
-            "San Antonio",
-            "San Isidro",
-            "San Miguel",
-            "San Rafael",
-            "Santo Niño",
-            "Tagbak",
-            "Tikalaan"
-        ],
-        "Valencia City": [
-            "Bagontaas",
-            "Banlag",
-            "Barobo",
-            "Batangan",
-            "Catumbalon",
-            "Colonia",
-            "Concepcion",
-            "Dagat-Kidavao",
-            "Guinoyuran",
-            "Kahapunan",
-            "Laligan",
-            "Lilingayon",
-            "Lourdes",
-            "Lumbayao",
-            "Lumbo",
-            "Lurogan",
-            "Maapag",
-            "Mabuhay",
-            "Mailag",
-            "Mt. Nebo",
-            "Nabago",
-            "Pinatilan",
-            "Poblacion",
-            "San Carlos",
-            "San Isidro",
-            "Sinabuagan",
-            "Sinayawan",
-            "Sugod",
-            "Tongantongan",
-            "Tugaya",
-            "Vintar"
-        ],
-        "Malaybalay City": [
-            "Aglayan",
-            "Apo Macote",
-            "Bangcud",
-            "Barangay 1",
-            "Barangay 10",
-            "Barangay 11",
-            "Barangay 2",
-            "Barangay 3",
-            "Barangay 4",
-            "Barangay 5",
-            "Barangay 6",
-            "Barangay 7",
-            "Barangay 8",
-            "Barangay 9",
-            "Busdi",
-            "Cabangahan",
-            "Caburacanan",
-            "Canituan",
-            "Capitan Angel",
-            "Casisang",
-            "Dalwangan",
-            "Imbayao",
-            "Indalaza",
-            "Kabalabag",
-            "Kalasungay",
-            "Kulaman",
-            "Laguitas",
-            "Linabo",
-            "Magsaysay",
-            "Malinao",
-            "Managok",
-            "Manalog",
-            "Mapayag",
-            "Mapulo",
-            "Miglamin",
-            "Patpat",
-            "Saint Peter",
-            "San Jose",
-            "San Martin",
-            "Santo Niño",
-            "Silae",
-            "Simaya",
-            "Sinanglanan",
-            "Sumpong",
-            "Violeta",
-            "Zamboanguita"
-        ]
+        "Manolo Fortich": 
+        [
+        "Agusan Canyon",
+        "Alae",
+        "Dahilayan",
+        "Dalirig",
+        "Damilag",
+        "Diclum",
+        "Guilang-guilang",
+        "Kalugmanan",
+        "Lindaban",
+        "Lingion",
+        "Lunocan",
+        "Maluko",
+        "Mambatangan",
+        "Mampayag",
+        "Mantibugao",
+        "Minsuro",
+        "San Miguel",
+        "Sankanan",
+        "Santiago",
+        "Santo Niño",
+        "Tankulan",
+        "Ticala"
+    ],
+    "Maramag": [
+    "Anahawon",
+    "Bagongsilang",
+    "Base Camp",
+    "Bayabason",
+    "Camp I",
+    "Colambugan",
+    "Dagumba-an",
+    "Danggawan",
+    "Dologon",
+    "Kiharong",
+    "Kisanday",
+    "Kuya",
+    "La Roxas",
+    "North Poblacion",
+    "Panadtalan",
+    "Panalsalan",
+    "San Miguel",
+    "San Roque",
+    "South Poblacion",
+    "Tubigon"
+  ],
+  "Pangantucan": [
+    "Adtuyon",
+    "Bacusanon",
+    "Bangahan",
+    "Barandias",
+    "Concepcion",
+    "Gandingan",
+    "Kimanait",
+    "Kipadukan",
+    "Langcataon",
+    "Lantay",
+    "Madaya",
+    "Malipayon",
+    "Mendis",
+    "Nabaliwa",
+    "New Eden",
+    "Payad",
+    "Pigtauranan",
+    "Poblacion",
+    "Portulin"
+  ],
+  "Quezon": [
+    "Butong",
+    "Cawayan",
+    "Cebole",
+    "C-Handumanan",
+    "Delapa",
+    "Dumalama",
+    "Kiburiao",
+    "Kipaypayon",
+    "Libertad",
+    "Linabo",
+    "Lipa",
+    "Lumintao",
+    "Magsaysay",
+    "Mahayag",
+    "Manuto",
+    "Merangerang",
+    "Mibantang",
+    "Minongan",
+    "Minsalirak",
+    "Minsamongan",
+    "Paitan",
+    "Palacapao",
+    "Pinilayan",
+    "Poblacion",
+    "Puntian",
+    "Salawagan",
+    "San Isidro",
+    "San Jose",
+    "San Roque",
+    "Santa Cruz",
+    "Santa Filomena"
+  ],
+  "San Fernando": [
+    "Bonacao",
+    "Bulalang",
+    "Cabuling",
+    "Candelaria",
+    "Cayaga",
+    "Dao",
+    "Durian",
+    "Halapitan",
+    "Iglugsad",
+    "Kalagangan",
+    "Kawayan",
+    "Kibongcog",
+    "Little Baguio",
+    "Mabuhay",
+    "Magkalungay",
+    "Malayanan",
+    "Matupe",
+    "Nacabuklad",
+    "Namnam",
+    "Palacpacan",
+    "Sacramento Valley",
+    "San Jose",
+    "Santo Domingo",
+    "Tugop"
+  ],
+  "Sumilao": [
+    "Kisolon",
+    "Kulasi",
+    "Licoan",
+    "Lupiagan",
+    "Ocasion",
+    "Poblacion",
+    "Puntian",
+    "San Roque",
+    "San Vicente",
+    "Vista Villa"
+  ],
+  "Talakag": [
+    "Barangay 1",
+    "Barangay 2",
+    "Barangay 3",
+    "Barangay 4",
+    "Barangay 5",
+    "Basak",
+    "Baylanan",
+    "Cacaon",
+    "Colawingon",
+    "Cosina",
+    "Dagumbaan",
+    "Dagundalahon",
+    "Dominorog",
+    "Indulang",
+    "Lantud",
+    "Lapok",
+    "Liguron",
+    "Lingi-on",
+    "Lirongan",
+    "Miarayon",
+    "Sagaran",
+    "Salucot",
+    "San Antonio",
+    "San Isidro",
+    "San Miguel",
+    "San Rafael",
+    "Santo Niño",
+    "Tagbak",
+    "Tikalaan"
+  ],
+  "Valencia City": [
+    "Bagontaas",
+    "Banlag",
+    "Barobo",
+    "Batangan",
+    "Catumbalon",
+    "Colonia",
+    "Concepcion",
+    "Dagat-Kidavao",
+    "Guinoyuran",
+    "Kahapunan",
+    "Laligan",
+    "Lilingayon",
+    "Lourdes",
+    "Lumbayao",
+    "Lumbo",
+    "Lurogan",
+    "Maapag",
+    "Mabuhay",
+    "Mailag",
+    "Mt. Nebo",
+    "Nabago",
+    "Pinatilan",
+    "Poblacion",
+    "San Carlos",
+    "San Isidro",
+    "Sinabuagan",
+    "Sinayawan",
+    "Sugod",
+    "Tongantongan",
+    "Tugaya",
+    "Vintar"
+  ],
+  "Malaybalay City": [
+    "Aglayan",
+    "Apo Macote",
+    "Bangcud",
+    "Barangay 1",
+    "Barangay 10",
+    "Barangay 11",
+    "Barangay 2",
+    "Barangay 3",
+    "Barangay 4",
+    "Barangay 5",
+    "Barangay 6",
+    "Barangay 7",
+    "Barangay 8",
+    "Barangay 9",
+    "Busdi",
+    "Cabangahan",
+    "Caburacanan",
+    "Canayan",
+    "Capitan Angel",
+    "Casisang",
+    "Dalwangan",
+    "Imbayao",
+    "Indalaza",
+    "Kabalabag",
+    "Kalasungay",
+    "Kulaman",
+    "Laguitas",
+    "Linabo",
+    "Magsaysay",
+    "Maligaya",
+    "Managok",
+    "Manalog",
+    "Mapayag",
+    "Mapulo",
+    "Miglamin",
+    "Patpat",
+    "Saint Peter",
+    "San Jose",
+    "San Martin",
+    "Santo Niño",
+    "Silae",
+    "Simaya",
+    "Sinanglanan",
+    "Sumpong",
+    "Violeta",
+    "Zamboanguita"
+  ]
+
     };
 
     $('#municipality').change(function() {
@@ -555,7 +522,32 @@
         }
         $('#barangay').html(options);
     });
+</script>
 
+
+
+                        <button type="submit" class="btn bg-gradient-dark">Save</button>
+                        <a href="{{ route('youth.index') }}" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      </div>
+      
+     
+    </div>
+  </main>
+ 
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
       var options = {

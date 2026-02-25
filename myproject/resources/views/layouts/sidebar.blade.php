@@ -1,8 +1,8 @@
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-radius-lg fixed-start ms-2  bg-white my-2" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-dark opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand px-4 py-3 m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
-        <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img" width="26" height="26" alt="main_logo">
+      <a class="navbar-brand px-4 py-3 m-0" href="{{ route('dashboard') }}" target="_blank">
+        <img src="{{ asset('assets/images/pydo.png') }}" class="navbar-brand-img" width="26" height="26" alt="main_logo">
         <span class="ms-1 text-sm text-dark">BukYouth</span>
       </a>
     </div>
@@ -15,14 +15,21 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
+        
         <li class="nav-item">
-            <a class="nav-link text-dark {{ Request::is('municipalities') ? 'active bg-gradient-dark text-white' : '' }}" href="{{ route('municipalities.index') }}">
-            <i class="material-symbols-rounded opacity-5">location_city</i>
-            <span class="nav-link-text ms-1">Municipalities</span>
+            <a class="nav-link text-dark {{ Request::is('organizations*') ? 'active bg-gradient-dark text-white' : '' }}" href="{{ route('organizations.index') }}">
+            <i class="material-symbols-rounded opacity-5">business</i>
+            <span class="nav-link-text ms-1"> LYDO Organizations</span>
+          </a>
+        </li>
+         <li class="nav-item">
+            <a class="nav-link text-dark {{ Request::is('sk*') ? 'active bg-gradient-dark text-white' : '' }}" href="{{ route('sk.index') }}">
+            <i class="material-symbols-rounded opacity-5">people</i>
+            <span class="nav-link-text ms-1"> SK President</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark {{ Request::is('youth') ? 'active bg-gradient-dark text-white' : '' }}" href="{{ route('youth.index') }}">
+          <a class="nav-link text-dark {{ Request::is('youth*') ? 'active bg-gradient-dark text-white' : '' }}" href="{{ route('youth.index') }}">
             <i class="material-symbols-rounded opacity-5">person_add</i>
             <span class="nav-link-text ms-1">Add Youth</span>
           </a>

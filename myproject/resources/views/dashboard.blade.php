@@ -19,12 +19,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/images/image.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
   <title>
-    Material Dashboard 3 by Creative Tim
+    BukYouth - Dashboard
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
@@ -61,29 +61,9 @@
           </p>
         </div>
 
-        <div class="col-12 mb-4">
-          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Open Modal
-          </button>
-        </div>
+        <div class="modal modal-content">
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex ="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                Modal content goes here
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
+
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
@@ -91,7 +71,7 @@
               <div class="d-flex justify-content-between">
                 <div>
                   <p class="text-sm mb-0 text-capitalize">Total LYDO</p>
-                  <h2 class="mb-0">0</h2>
+                  <h2 class="mb-0">{{ $lydo }}</h2>
                 </div>
                 <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
                   <i class="material-symbols-rounded opacity-10">group</i>
@@ -109,7 +89,7 @@
               <div class="d-flex justify-content-between">
                 <div>
                   <p class="text-sm mb-0 text-capitalize">Total SK President</p>
-                  <h2 class="mb-0">0</h2>
+                  <h2 class="mb-0">{{ $sk_presidents }}</h2>
                 </div>
                 <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
                   <i class="material-symbols-rounded opacity-10">location_on</i>
@@ -127,7 +107,7 @@
               <div class="d-flex justify-content-between">
                 <div>
                   <p class="text-sm mb-0 text-capitalize">Total Number of Register</p>
-                  <h2 class="mb-0">0</h2>
+                  <h2 class="mb-0">{{ $total_registered }}</h2>
                 </div>
                 <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
                   <i class="material-symbols-rounded opacity-10">map</i>
@@ -145,7 +125,7 @@
               <div class="d-flex justify-content-between">
                 <div>
                   <p class="text-sm mb-0 text-capitalize">Total Organizations</p>
-                  <h2 class="mb-0">0</h2>
+                  <h2 class="mb-0">{{ $total_organizations }}</h2>
                 </div>
                 <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
                   <i class="material-symbols-rounded opacity-10">business</i>
@@ -159,56 +139,38 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-md-6 mt-4 mb-4">
+        <div class="col-lg-6 col-md-6 mt-4 mb-4">
           <div class="card">
             <div class="card-body">
-              <h6 class="mb-0 ">Website Views</h6>
-              <p class="text-sm ">Last Campaign Performance</p>
+              <h6 class="mb-0 ">LYDO vs SK President Distribution</h6>
+              <p class="text-sm ">Organization Type Comparison</p>
               <div class="pe-2">
                 <div class="chart">
-                  <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
+                  <canvas id="chart-donut" class="chart-canvas" height="170"></canvas>
                 </div>
               </div>
               <hr class="dark horizontal">
               <div class="d-flex ">
-                <i class="material-symbols-rounded text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm"> campaign sent 2 days ago </p>
+                <i class="material-symbols-rounded text-sm my-auto me-1">pie_chart</i>
+                <p class="mb-0 text-sm"> Total organizations: {{ $lydo }} </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 mt-4 mb-4">
+        <div class="col-lg-6 col-md-6 mt-4 mb-4">
           <div class="card ">
             <div class="card-body">
-              <h6 class="mb-0 "> Daily Sales </h6>
-              <p class="text-sm "> (<span class="font-weight-bolder">+15%</span>) increase in today sales. </p>
+              <h6 class="mb-0 "> Registrations by Municipality </h6>
+              <p class="text-sm "> Distribution across municipalities </p>
               <div class="pe-2">
                 <div class="chart">
-                  <canvas id="chart-line" class="chart-canvas" height="170"></canvas>
+                  <canvas id="chart-registrations" class="chart-canvas" height="170"></canvas>
                 </div>
               </div>
               <hr class="dark horizontal">
               <div class="d-flex ">
-                <i class="material-symbols-rounded text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm"> updated 4 min ago </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mt-4 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="mb-0 ">Completed Tasks</h6>
-              <p class="text-sm ">Last Campaign Performance</p>
-              <div class="pe-2">
-                <div class="chart">
-                  <canvas id="chart-line-tasks" class="chart-canvas" height="170"></canvas>
-                </div>
-              </div>
-              <hr class="dark horizontal">
-              <div class="d-flex ">
-                <i class="material-symbols-rounded text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm">just updated</p>
+                <i class="material-symbols-rounded text-sm my-auto me-1">location_city</i>
+                <p class="mb-0 text-sm"> Total registered: {{ $total_registered }} </p>
               </div>
             </div>
           </div>
@@ -226,37 +188,52 @@
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/chartjs.min.js"></script>
   <script>
-    var ctx = document.getElementById("chart-bars").getContext("2d");
+    // Bar Chart for LYDO vs SK President
+    var ctxBar = document.getElementById("chart-donut").getContext("2d");
 
-    new Chart(ctx, {
+    new Chart(ctxBar, {
       type: "bar",
       data: {
-        labels: ["M", "T", "W", "T", "F", "S", "S"],
+        labels: ["LYDO", "SK President"],
         datasets: [{
-          label: "Views",
-          tension: 0.4,
-          borderWidth: 0,
-          borderRadius: 4,
-          borderSkipped: false,
-          backgroundColor: "#43A047",
-          data: [50, 45, 22, 28, 50, 60, 76],
-          barThickness: 'flex'
-        }, ],
+          label: "Organizations",
+          data: [{{ $lydo }}, {{ $sk_presidents }}],
+          backgroundColor: [
+            "#43A047",
+            "#FB8C00"
+          ],
+          borderColor: [
+            "#43A047",
+            "#FB8C00"
+          ],
+          borderWidth: 2,
+          borderRadius: 8,
+          barThickness: 60
+        }]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: false,
+            display: false
+          },
+          tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            padding: 12,
+            displayColors: false,
+            callbacks: {
+              label: function(context) {
+                return context.label + ': ' + context.parsed.y;
+              }
+            }
           }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index',
         },
         scales: {
           y: {
+            beginAtZero: true,
             grid: {
               drawBorder: false,
               display: true,
@@ -266,24 +243,22 @@
               color: '#e5e5e5'
             },
             ticks: {
-              suggestedMin: 0,
-              suggestedMax: 500,
-              beginAtZero: true,
+              display: true,
+              color: '#737373',
               padding: 10,
               font: {
-                size: 14,
+                size: 12,
                 lineHeight: 2
               },
-              color: "#737373"
-            },
+              stepSize: 1
+            }
           },
           x: {
             grid: {
               drawBorder: false,
               display: false,
               drawOnChartArea: false,
-              drawTicks: false,
-              borderDash: [5, 5]
+              drawTicks: false
             },
             ticks: {
               display: true,
@@ -291,171 +266,74 @@
               padding: 10,
               font: {
                 size: 14,
-                lineHeight: 2
-              },
+                weight: '500'
+              }
             }
-          },
-        },
-      },
+          }
+        }
+      }
     });
 
+    // Donut Chart for Registrations by Municipality
+    var ctxDonut = document.getElementById("chart-registrations").getContext("2d");
 
-    var ctx2 = document.getElementById("chart-line").getContext("2d");
+    // Generate colors for municipalities
+    const colors = [
+        '#43A047', '#FB8C00', '#1E88E5', '#D81B60', '#8E24AA',
+        '#F4511E', '#3949AB', '#00ACC1', '#FDD835', '#6D4C41'
+    ];
 
-    new Chart(ctx2, {
-      type: "line",
+    new Chart(ctxDonut, {
+      type: "doughnut",
       data: {
-        labels: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+        labels: [{!! $municipality_data->pluck('municipality')->map(function($m) { return "'".$m."'"; })->implode(',') !!}],
         datasets: [{
-          label: "Sales",
-          tension: 0,
+          label: "Registrations",
+          data: [{!! $municipality_data->pluck('total')->implode(',') !!}],
+          backgroundColor: colors.slice(0, {{ $municipality_data->count() }}),
+          borderColor: '#fff',
           borderWidth: 2,
-          pointRadius: 3,
-          pointBackgroundColor: "#43A047",
-          pointBorderColor: "transparent",
-          borderColor: "#43A047",
-          backgroundColor: "transparent",
-          fill: true,
-          data: [120, 230, 130, 440, 250, 360, 270, 180, 90, 300, 310, 220],
-          maxBarThickness: 6
-
-        }],
+          hoverOffset: 4
+        }]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: false,
+            position: 'bottom',
+            labels: {
+              padding: 15,
+              font: {
+                size: 11
+              },
+              color: "#737373",
+              usePointStyle: true,
+              pointStyle: 'circle'
+            }
           },
           tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            padding: 12,
+            displayColors: true,
             callbacks: {
-              title: function(context) {
-                const fullMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                return fullMonths[context[0].dataIndex];
+              label: function(context) {
+                let label = context.label || '';
+                if (label) {
+                  label += ': ';
+                }
+                const sum = context.dataset.data.reduce((a, b) => a + b, 0);
+                const percentage = ((context.parsed / sum) * 100).toFixed(1);
+                label += context.parsed + ' (' + percentage + '%)';
+                return label;
               }
             }
           }
         },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [4, 4],
-              color: '#e5e5e5'
-            },
-            ticks: {
-              display: true,
-              color: '#737373',
-              padding: 10,
-              font: {
-                size: 12,
-                lineHeight: 2
-              },
-            }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
-              borderDash: [5, 5]
-            },
-            ticks: {
-              display: true,
-              color: '#737373',
-              padding: 10,
-              font: {
-                size: 12,
-                lineHeight: 2
-              },
-            }
-          },
-        },
-      },
-    });
-
-    var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
-
-    new Chart(ctx3, {
-      type: "line",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-          label: "Tasks",
-          tension: 0,
-          borderWidth: 2,
-          pointRadius: 3,
-          pointBackgroundColor: "#43A047",
-          pointBorderColor: "transparent",
-          borderColor: "#43A047",
-          backgroundColor: "transparent",
-          fill: true,
-          data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-          maxBarThickness: 6
-
-        }],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [4, 4],
-              color: '#e5e5e5'
-            },
-            ticks: {
-              display: true,
-              padding: 10,
-              color: '#737373',
-              font: {
-                size: 14,
-                lineHeight: 2
-              },
-            }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
-              borderDash: [4, 4]
-            },
-            ticks: {
-              display: true,
-              color: '#737373',
-              padding: 10,
-              font: {
-                size: 14,
-                lineHeight: 2
-              },
-            }
-          },
-        },
-      },
+        cutout: '60%'
+      }
     });
   </script>
   <script>
