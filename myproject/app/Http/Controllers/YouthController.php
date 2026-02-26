@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Youth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\LydcMember;
+
 
 
 class YouthController extends Controller
@@ -62,8 +64,21 @@ class YouthController extends Controller
         $requestData['type'] = 'LYDO';
         $requestData['file_plan'] = $filePath ?? null;
 
-        // Create a new LYDO record in the database
-        Youth::create($requestData);
+        // Create LYDO and assign to variable
+        $lydo = Youth::create($requestData);
+
+        // Store LYDC Members (if any)
+        if ($request->lydc_members) {
+            $members = explode(',', $request->lydc_members);
+
+            foreach ($members as $memberName) {
+                LydcMember::create([
+                    'name' => trim($memberName),
+                    'youth_id' => $lydo->id,
+                ]);
+            }
+        }
+
 
         // Redirect back to the youth index page with a success message
         return redirect()->route('youth.index')->with('success', 'LYDO added successfully!');

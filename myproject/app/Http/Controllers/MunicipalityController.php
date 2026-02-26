@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Youth;
+use App\Models\LydcMember;
 class MunicipalityController extends Controller
+
 {
     /**
      * Display a listing of the resource.
@@ -40,7 +42,9 @@ class MunicipalityController extends Controller
     {
        //show only the specific youth that was clicked
        $youth = Youth::findOrFail($id);
-       return view('organizations.show', compact('youth'));
+       $lydcMembers = LydcMember::where('youth_id', $id)->get();
+       
+       return view('organizations.show', compact('youth', 'lydcMembers'));
     }
 
     /**

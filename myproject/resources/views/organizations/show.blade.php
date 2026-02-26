@@ -100,9 +100,10 @@
                  <tr>
                     <td class="font-weight-bold"><p class="font-weight-bold mb-0">LYDP Plan</p></td>
                     <td>
- <a href="{{ route('youth.view-lydp', $youth->id) }}" target="_blank" class="text-decoration-underline">
+                      <a href="{{ route('youth.view-lydp', $youth->id) }}" target="_blank" class="text-decoration-none text-danger">
                                                 <i class="fas fa-eye"></i> View
-                                            </a>                    </td>
+                      </a>                    
+                    </td>
                  </tr>
                  <tr>
                     <td class="font-weight-bold"><p class="font-weight-bold mb-0">LYDP Status</p></td>
@@ -120,13 +121,13 @@
                     <td class="font-weight-bold"><p class="font-weight-bold mb-0">Facebook Page</p></td>
                     <td class=" mb-0">{{ $youth->facebook_page }}</td>
                  </tr>
+
                   </tbody>
 
-                </table>
+                  
 
-                <div class="mb-3 px-2">
-                    <button type="submit" class="btn bg-gradient-dark"><a href="{{ route('organizations.index') }} " class="text-white">Cancel</a></button>
-                </div>
+
+                </table>
                 
               </div>
               
@@ -136,6 +137,57 @@
         
       </div>
          
+      <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="bg-gradient-dark shadow-dark border-radius-lg pt-4 pb-3 d-flex align-items-center justify-content-between px-3">
+              <h6 class="text-white text-capitalize m-0">List of All Members</h6>
+            </div>
+            </div>
+            <div class="px-3 pt-3">
+              <div class="d-flex justify-content-end">
+                
+              </div>
+            </div>
+
+            
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center">
+                
+                 <tbody class="">
+                 <tr>
+                      <td class="font-weight-bold"><p class="font-weight-bold mb-0">LYDC Members</p></td>
+                    
+                 </tr>
+                  @foreach($lydcMembers as $member)
+                    <tr>
+                      <td class=" mb-0">{{ $member->name }}</td>
+                    </tr>
+                  @endforeach
+                  </tbody>
+
+                  
+
+
+                </table>
+
+            
+                
+              </div>
+              
+            </div>
+          </div>
+           <div class="mb-3">
+                    <button type="submit" class="btn bg-gradient-dark"><a href="{{ route('organizations.index') }} " class="text-white">Cancel</a></button>
+                </div>
+        </div>
+
+        
+        
+      </div>
+
     </div>
   </main>
  

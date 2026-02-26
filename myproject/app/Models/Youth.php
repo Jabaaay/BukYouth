@@ -3,6 +3,7 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\LydcMember;
 
 class Youth extends Model
 {
@@ -22,4 +23,9 @@ class Youth extends Model
         'brgy',
         'file_plan'
     ];
+
+     public function members()
+    {
+        return $this->hasMany(LydcMember::class); // LYDO has many members
+    }
 }
