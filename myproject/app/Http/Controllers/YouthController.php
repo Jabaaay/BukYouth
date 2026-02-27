@@ -5,6 +5,9 @@ use App\Models\Youth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\LydcMember;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use App\Models\YouthImage;
+use Cloudinary\Api\Upload\UploadApi;
 
 
 
@@ -36,6 +39,7 @@ class YouthController extends Controller
         // Validate the incoming request data
         $request->validate([
             'name' => 'required|string|max:255',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Optional photo upload
             'email' => 'required|email|unique:youth,email',
             'contact_number' => 'required|string|max:20',
             'facebook_page' => 'nullable|string|max:255',
@@ -64,8 +68,28 @@ class YouthController extends Controller
         $requestData['type'] = 'LYDO';
         $requestData['file_plan'] = $filePath ?? null;
 
+
         // Create LYDO and assign to variable
         $lydo = Youth::create($requestData);
+         
+         
+        // Upload profile photo to Cloudinary
+        if ($request->hasFile('photo')) {
+
+            $upload = (new UploadApi())->upload(
+                $request->file('photo')->getRealPath(),
+                ['folder' => 'youth_profiles']
+            );
+
+            YouthImage::create([
+                'youth_id' => $lydo->id,
+                'image_url' => $upload['secure_url'],
+                'public_id' => $upload['public_id'],
+                'is_primary' => true
+            ]);
+        }
+
+       
 
         // Store LYDC Members (if any)
         if ($request->lydc_members) {
@@ -78,7 +102,6 @@ class YouthController extends Controller
                 ]);
             }
         }
-
 
         // Redirect back to the youth index page with a success message
         return redirect()->route('youth.index')->with('success', 'LYDO added successfully!');

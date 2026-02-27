@@ -28,4 +28,14 @@ class Youth extends Model
     {
         return $this->hasMany(LydcMember::class); // LYDO has many members
     }
+
+    public function images()
+    {
+        return $this->hasMany(YouthImage::class);
+    }
+
+    public function profileImage()
+    {
+        return $this->hasOne(YouthImage::class)->where('is_primary', true);
+    }
 }
