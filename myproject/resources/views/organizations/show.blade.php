@@ -50,145 +50,209 @@
     <!-- Navbar -->
    @include('layouts.nav')
     <!-- End Navbar -->
-    <div class="container-fluid py-2">
-      <div class="row">
-        <div>
-          <h1 class="mb-0 h2 font-weight-bolder">Local Youth Development Officer</h1>
-          <p class="mb-4">
-          </p>
-        </div>
-        <div class="col-12">
-          <div class="card my-4">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-            <div class="bg-gradient-dark shadow-dark border-radius-lg pt-4 pb-3 d-flex align-items-center justify-content-between px-3">
-              <h6 class="text-white text-capitalize m-0">Personal Information</h6>
+     <div class="container-fluid px-2 px-md-4">
+      <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <span class="mask  bg-gradient-dark  opacity-6"></span>
+      </div>
+      <div class="card card-body mx-2 mx-md-2 mt-n6">
+        <div class="row gx-4 mb-2">
+          <div class="col-auto">
+            <div class="avatar avatar-xl position-relative">
+              <img src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
-            </div>
-            <div class="px-3 pt-3">
-              <div class="d-flex justify-content-end">
-                
-              </div>
-            </div>
-
-            
-            <div class="card-body px-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center">
-                
-                 <tbody class="">
-
-                 <tr>
-                    <td class="font-weight-bold"><p class=" font-weight-bold mb-0">Name</p></td>
-                    <td class=" mb-0">{{ $youth->name }}</td>
-                 </tr>
-                 <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">Type</p></td>
-                    <td class=" mb-0">{{ $youth->type }}</td>
-                 </tr>
-                  <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">Email</p></td>
-                    <td class=" mb-0">{{ $youth->email }}</td>
-                 </tr>
-                 <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">Contact Number</p></td>
-                    <td class=" mb-0">{{ $youth->contact_number }}</td>
-                 </tr>
-                  <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">Registered Count</p></td>
-                    <td class=" mb-0">{{ $youth->registered_count }}</td>
-                 </tr>
-                 <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">LYDP Plan</p></td>
-                    <td>
-                      <a href="{{ route('youth.view-lydp', $youth->id) }}" target="_blank" class="text-decoration-none text-danger">
-                                                <i class="fas fa-eye"></i> View
-                      </a>                    
-                    </td>
-                 </tr>
-                 <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">LYDP Status</p></td>
-                    <td class=" mb-0">{{ $youth->lydp_status }}</td>
-                 </tr>
-                 <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">Municipality</p></td>
-                    <td class=" mb-0">{{ $youth->municipality }}</td>
-                 </tr>
-                 <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">Barangay</p></td>
-                    <td class=" mb-0">{{ $youth->brgy }}</td>
-                 </tr>
-                 <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">Facebook Page</p></td>
-                    <td class=" mb-0">{{ $youth->facebook_page }}</td>
-                 </tr>
-
-                  </tbody>
-
-                  
-
-
-                </table>
-                
-              </div>
-              
+          </div>
+          <div class="col-auto my-auto">
+            <div class="h-100">
+              <h5 class="mb-1">
+               {{ $youth->name }}
+              </h5>
+              <p class="mb-0 font-weight-normal text-sm badge bg-gradient-primary">
+                {{ $youth->type }}
+              </p>
             </div>
           </div>
         </div>
-        
-      </div>
-         
-      <div class="row">
-        <div class="col-12">
-          <div class="card my-4">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-            <div class="bg-gradient-dark shadow-dark border-radius-lg pt-4 pb-3 d-flex align-items-center justify-content-between px-3">
-              <h6 class="text-white text-capitalize m-0">List of All Members</h6>
-            </div>
-            </div>
-            <div class="px-3 pt-3">
-              <div class="d-flex justify-content-end">
-                
+        <div class="row">
+          <div class="row">
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <h6 class="mb-0">Email Address</h6>
+                </div>
+                <div class="card-body">
+                  <p class="font-size-14">
+                    {{ $youth->email }}
+                  </p>
+                </div>
               </div>
             </div>
-
-            
-            <div class="card-body px-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center">
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <h6 class="mb-0">Contact Number</h6>
+                    </div>
+                    <div class="card-body">
+                  <p class="font-size-14">
+                    {{ $youth->contact_number }}
+                  </p>
+                </div>
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+              <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <h6 class="mb-0">Register Count</h6>
+                    </div>
+                    <div class="card-body">
+                  <p class="font-size-14">
+                    {{ $youth->registered_count }}
+                  </p>
+                </div>
+                  </div>
+                </div>
                 
-                 <tbody class="">
-                 <tr>
-                      <td class="font-weight-bold"><p class="font-weight-bold mb-0">LYDC Members</p></td>
-                    
-                 </tr>
+              </div>
+            </div> 
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <h6 class="mb-0">Municipality</h6>
+                    </div>
+                    <div class="card-body">
+                  <p class="font-size-14">
+                    {{ $youth->municipality }}
+                  </p>
+                </div>
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <h6 class="mb-0">Barangay</h6>
+                    </div>
+                    <div class="card-body">
+                  <p class="font-size-14">
+                    {{ $youth->brgy }}
+                  </p>
+                </div>
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <h6 class="mb-0">Facebook Page</h6>
+                    </div>
+                    <div class="card-body">
+                  <p class="font-size-14">
+                    <a href="{{ $youth->facebook_page }}" target="_blank" class="text-decoration-none text-danger">
+                      {{ $youth->facebook_page }}
+                    </a>
+                  </p>
+                </div>
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <h6 class="mb-0">LYDP Plan</h6>
+                    </div>
+                    <div class="card-body">
+                  <p class="font-size-14">
+                    <a href="{{ route('youth.view-lydp', $youth->id) }}" target="_blank" class="text-decoration-none text-danger">
+                      View
+                    </a> 
+                  </p>
+                </div>
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <h6 class="mb-0">LYDP Status</h6>
+                    </div>
+                    <div class="card-body">
+                  <p class="font-size-14">
+                    @if($youth->lydp_status == 'Pending')
+                      <span class="badge bg-warning">Pending</span>
+                    @elseif($youth->lydp_status == 'Approved')
+                      <span class="badge bg-success">Approved</span>
+                    @elseif($youth->lydp_status == 'Rejected')
+                      <span class="badge bg-danger">Rejected</span>
+                    @endif
+                  </p>
+                </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div> 
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                 
+                    <div class="card-body">
+               
+                </div>
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <h6 class="mb-0">List of All Members</h6>
+                    </div>
+                    <div class="card-body">
+                  
                   @foreach($lydcMembers as $member)
                     <tr>
                       <td class=" mb-0">{{ $member->name }}</td>
                     </tr>
                   @endforeach 
-                  </tbody>
-
-                  
-
-
-                </table>
-
-            
-                
+                </div>
+                  </div>
+                </div>
+             
               </div>
-              
             </div>
           </div>
-           <div class="mb-3">
-                    <button type="submit" class="btn bg-gradient-dark"><a href="{{ route('organizations.index') }} " class="text-white">Cancel</a></button>
-                </div>
         </div>
-
-        
-        
       </div>
-
     </div>
+    <br>
   </main>
  
   <!--   Core JS Files   -->
@@ -229,3 +293,4 @@
 </body>
 
 </html>
+
