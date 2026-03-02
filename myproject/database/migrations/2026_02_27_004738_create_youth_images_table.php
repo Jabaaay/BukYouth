@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('youth_images', function (Blueprint $table) {
             $table->id();
 
-             $table->foreignId('youth_id')
-                  ->constrained('youth')
-                  ->onDelete('cascade');
+            // Add foreign key to youth table
+            $table->foreignId('youth_id')
+                ->constrained('youth') // make sure the table name is 'youth'
+                ->cascadeOnDelete();
 
             $table->string('image_url'); // Cloudinary secure URL
-            $table->string('public_id'); // for deleting from Cloudinary
+            $table->string('public_id'); // Cloudinary public ID
+            $table->boolean('is_primary')->default(true);
 
-            $table->boolean('is_primary')->default(true); 
-            
             $table->timestamps();
         });
     }

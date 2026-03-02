@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Youth;
 use App\Models\LydcMember;
+use App\Models\YouthImage;
 class MunicipalityController extends Controller
 
 {
@@ -14,7 +15,9 @@ class MunicipalityController extends Controller
     public function index()
 {
     $youths = Youth::all();
-    return view('organizations.index', compact('youths'));
+    $imagePath = YouthImage::where('is_primary', true)->pluck('image_url', 'youth_id')->toArray();
+    return view('organizations.index', compact('youths', 'imagePath'));
+
 }
 
 

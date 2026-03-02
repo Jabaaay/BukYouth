@@ -252,7 +252,6 @@
         </div>
       </div>
     </div>
-    <br>
   </main>
  
   <!--   Core JS Files   -->

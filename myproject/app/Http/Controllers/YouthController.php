@@ -5,9 +5,9 @@ use App\Models\Youth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\LydcMember;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
-use App\Models\YouthImage;
+use Cloudinary\Configuration\Configuration;
 use Cloudinary\Api\Upload\UploadApi;
+use App\Models\YouthImage;
 
 
 
@@ -72,13 +72,23 @@ class YouthController extends Controller
         // Create LYDO and assign to variable
         $lydo = Youth::create($requestData);
          
-         
-        // Upload profile photo to Cloudinary
+        Configuration::instance([
+            'cloud' => [
+                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                'api_key' => env('CLOUDINARY_API_KEY'),
+                'api_secret' => env('CLOUDINARY_API_SECRET'),
+            ],
+            'url' => ['secure' => true],
+        ]);
+
+        // Handle photo upload if provided
         if ($request->hasFile('photo')) {
 
             $upload = (new UploadApi())->upload(
                 $request->file('photo')->getRealPath(),
-                ['folder' => 'youth_profiles']
+                [
+                    'folder' => 'youth_profiles'
+                ]
             );
 
             YouthImage::create([
@@ -87,8 +97,11 @@ class YouthController extends Controller
                 'public_id' => $upload['public_id'],
                 'is_primary' => true
             ]);
-        }
-
+            }try {
+            // upload code
+            } catch (\Exception $e) {
+                dd($e->getMessage());
+            }
        
 
         // Store LYDC Members (if any)
