@@ -211,7 +211,7 @@
         "Damulog": ["Aludas", "Angga-an", "Kinapat", "Kiraon", "Kitingting", "Lagandang", "Macapari", "Maican", "Migcawayan", "New Compostela", "Old Damulog", "Omonay", "Poblacion", "Pocopoco", "Sampagar", "San Isidro", "Tangkulan"],
         "Dangcagan": ["Barongcot", "Bugwak", "Dolorosa", "Kapalaran", "Kianggat", "Lourdes", "Macarthur", "Miaray", "Migcuya", "New Visayas", "Osmeña", "Poblacion", "Sagbayan", "San Vicente"],
         "Don Carlos": ["Bismartz", "Bocboc", "Buyot", "Cabadiangan", "Calaocalao", "Don Carlos Norte", "Doc Carlos Sur", "Embayao", "Kalubihon", "Kasigkot", "Kawilihan", "Kiara", "Kibatang", "Mahayahay", "Manlamonay", "Maraymaray", "Mauswagon", "Minsalagan", "New Nongnongan", "new Visayas", "Old Nongnongan", "Pinamaloy", "Pualas", "San Antonio East", "San Antonoio West", "San Francisco", "San Nicolas", "San Roque", "Sinaysayan", "Sinuda", "Tandong", "Tawas", "West Dalurong", "White Kulaman"],
-        "Impasug-ong": ["Bontongon", "Bulonay", "Capitan Bayong", "Cawayan", "Dumalaguing", "Guihe-an", "Hagpa", "Impalutao", "Kalabugao", "Kibangay", "La Fortuna", "Poblacion", "Sayawan"],
+        "Impasug-ong": ["Bontongon", "Bulonay", "Capitan Bayong", "Cawayan", "Dumalaguing", "Guihe-an", "Hagpa", "Impalutao", "Kalabugao", "Kibenton", "La Fortuna", "Poblacion", "Sayawan"],
         "Kadingilan": [
             "Bagongbayan",
             "Bagor",

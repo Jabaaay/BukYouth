@@ -49,6 +49,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/sk/{id}/edit', [SKController::class, 'edit'])->name('sk.edit');
     Route::put('/sk/{id}', [SKController::class, 'update'])->name('sk.update');
     Route::delete('/sk/{id}', [SKController::class, 'destroy'])->name('sk.destroy');
+
+    Route::get('/test-cloudinary', function () {
+    dd(config('cloudinary.cloud.api_secret'));
+});
     
 
 
