@@ -46,8 +46,10 @@ class MunicipalityController extends Controller
        //show only the specific youth that was clicked
        $youth = Youth::findOrFail($id);
        $lydcMembers = LydcMember::where('youth_id', $id)->get();
+        $imagePath = YouthImage::where('is_primary', true)->pluck('image_url', 'youth_id')->toArray();
+
        
-       return view('organizations.show', compact('youth', 'lydcMembers'));
+       return view('organizations.show', compact('youth', 'lydcMembers', 'imagePath'));
     }
 
     /**

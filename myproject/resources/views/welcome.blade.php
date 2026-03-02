@@ -14,6 +14,7 @@
   <!-- Nucleo Icons -->
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap">
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <!-- Material Icons -->
@@ -236,6 +237,9 @@
         visibility: hidden;
       }
     }
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
   </style>
 </head>
 
@@ -338,7 +342,7 @@
                       <td>{{ $lydo->name }}</td>
                       <td>{{ $lydo->contact_number }}</td>
                       <td>{{ $lydo->municipality }}</td>
-                      <td><a href="#" class="btn btn-sm btn-primary btn-hover">View</a></td>
+                      <td><a href="{{ route('lydo.show-profile', $lydo->id) }}" class="btn btn-sm btn-primary btn-hover">View</a></td>
                     </tr>
                     @empty
                     <tr>
@@ -375,7 +379,7 @@
                       <td>{{ $sk->name }}</td>
                       <td>{{ $sk->contact_number }}</td>
                       <td>{{ $sk->municipality }}</td>
-                      <td><a href="#" class="btn btn-sm btn-primary btn-hover">View</a></td>
+                      <td><a href="{{ route('sk.show-profile', $sk->id) }}" class="btn btn-sm btn-primary btn-hover">View</a></td>
                     </tr>
                     @empty
                     <tr>

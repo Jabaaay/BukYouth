@@ -50,75 +50,111 @@
     <!-- Navbar -->
    @include('layouts.nav')
     <!-- End Navbar -->
-    <div class="container-fluid py-2">
-      <div class="row">
-        <div>
-          <h1 class="mb-0 h2 font-weight-bolder">Local Youth Development Officer</h1>
-          <p class="mb-4">
-          </p>
-        </div>
-        <div class="col-12">
-          <div class="card my-4">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-            <div class="bg-gradient-dark shadow-dark border-radius-lg pt-4 pb-3 d-flex align-items-center justify-content-between px-3">
-              <h6 class="text-white text-capitalize m-0">Personal Information</h6>
+     <div class="container-fluid px-2 px-md-4">
+      
+<div class="mb-3">
+      <a href="{{ route('sk.index') }}" class="btn btn-outline-primary btn-fw me-3">
+        <i class="material-symbols-rounded">arrow_back</i>Back
+      </a>
+     </div>
+
+      <div class="page-header min-height-300 border-radius-xl mt-4" style="">
+        <span class="mask  bg-gradient-dark  opacity-6"></span>
+      </div>
+      <div class="card card-body mx-2 mx-md-2 mt-n6">
+        <div class="row gx-4 mb-2">
+          <div class="col-auto">
+            <div class="avatar avatar-xl position-relative">
+              <img src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
-            </div>
-            <div class="px-3 pt-3">
-              <div class="d-flex justify-content-end">
-                
-              </div>
-            </div>
-
-            
-            <div class="card-body px-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center">
-                
-                 <tbody class="">
-
-                 <tr>
-                    <td class="font-weight-bold"><p class=" font-weight-bold mb-0">Name</p></td>
-                    <td class=" mb-0">{{ $sk->name }}</td>
-                 </tr>
-                 <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">Type</p></td>
-                    <td class=" mb-0">{{ $sk->type }}</td>
-                 </tr>
-                  <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">Email</p></td>
-                    <td class=" mb-0">{{ $sk->email }}</td>
-                 </tr>
-                 <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">Contact Number</p></td>
-                    <td class=" mb-0">{{ $sk->contact_number }}</td>
-                 </tr>
-
-                 <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">Municipality</p></td>
-                    <td class=" mb-0">{{ $sk->municipality }}</td>
-                 </tr>
-                 <tr>
-                    <td class="font-weight-bold"><p class="font-weight-bold mb-0">Barangay</p></td>
-                    <td class=" mb-0">{{ $sk->brgy }}</td>
-                 </tr>
-
-                  </tbody>
-
-                </table>
-
-                <div class="mb-3 px-2">
-                    <button type="submit" class="btn bg-gradient-dark"><a href="{{ route('sk.index') }} " class="text-white">Cancel</a></button>
-                </div>
-                
-              </div>
-              
+          </div>
+          <div class="col-auto my-auto">
+            <div class="h-100">
+              <h5 class="mb-1">
+               {{ $sk->name }}
+              </h5>
+              <p class="mb-0 font-weight-normal text-sm badge bg-gradient-primary">
+                {{ $sk->type }}
+              </p>
             </div>
           </div>
         </div>
-        
-      </div>
+        <div class="row">
+          <div class="row">
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3 d-flex align-items-center">
+                  <i class="material-symbols-rounded me-2 text-primary">email</i>
+                  <h6 class="mb-0">Email Address</h6>
+                </div>
+                <div class="card-body">
+                  <p class="font-size-14 text-primary">
+                    {{ $sk->email }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3 ">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <i class="material-symbols-rounded me-2 text-primary">phone</i>
+                      <h6 class="mb-0">Contact Number</h6>
+                    </div>
+                    <div class="card-body">
+                  <p class="font-size-14 text-primary">
+                    {{ $sk->contact_number }}
+                  </p>
+                </div>
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+            
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <i class="material-symbols-rounded me-2 text-primary">location_city</i>
+                      <h6 class="mb-0">Municipality</h6>
+                    </div>
+                    <div class="card-body">
+                  <p class="font-size-14 text-primary">
+                    {{ $sk->municipality }}
+                  </p>
+                </div>
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <i class="material-symbols-rounded me-2 text-primary">location_on</i>
+                      <h6 class="mb-0">Barangay</h6>
+                    </div>
+                    <div class="card-body">
+                  <p class="font-size-14 text-primary">
+                    {{ $sk->brgy }}
+                  </p>
+                </div>
+                  </div>
+                </div>
+             
+              </div>
+            </div>
          
+      
+    
+          </div>
+        </div>
+      </div>
     </div>
   </main>
  
@@ -160,3 +196,4 @@
 </body>
 
 </html>
+

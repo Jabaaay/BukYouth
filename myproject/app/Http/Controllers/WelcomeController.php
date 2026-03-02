@@ -17,12 +17,12 @@ class WelcomeController extends Controller
         $lydos = Youth::where('type', 'LYDO')
             ->select('name', 'contact_number', 'municipality', 'id')
             ->orderBy('created_at', 'desc')
-            ->paginate(10);
+            ->paginate(5);
 
         // Get latest SK Presidents (limit to 5 for display)
         $skPresidents = Sk_President::select('name', 'contact_number', 'municipality', 'id')
             ->orderBy('created_at', 'desc')
-            ->paginate(10);
+            ->paginate(5);
 
         return view('welcome', compact('lydos', 'skPresidents'));
     }

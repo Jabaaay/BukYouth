@@ -51,6 +51,11 @@
    @include('layouts.nav')
     <!-- End Navbar -->
      <div class="container-fluid px-2 px-md-4">
+      <div class="mb-3">
+      <a href="{{ route('organizations.index') }}" class="btn btn-outline-primary btn-fw me-3">
+        <i class="material-symbols-rounded">arrow_back</i>Back
+      </a>
+     </div>
       <div class="page-header min-height-300 border-radius-xl mt-4" style="">
         <span class="mask  bg-gradient-dark  opacity-6"></span>
       </div>
@@ -58,8 +63,11 @@
         <div class="row gx-4 mb-2">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
-            </div>
+@if(isset($imagePath[$youth->id]))
+                    <img src="{{ $imagePath[$youth->id] }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                   @else
+                    <img src="../assets/images/image.png" class="avatar avatar-sm me-3 border-radius-lg" alt="user1"><img src="https://scontent.fcgm1-1.fna.fbcdn.net/v/t39.30808-6/618097911_2626094681097067_8038210258107961028_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeHC-nA98--AWtuvshzTWTiJDgXlZhB_1JYOBeVmEH_Uloeh4LiZ-bTuKR7KNN5h_0-Pm0KyJHGRyRDX_Ucnw-vL&_nc_ohc=dndpS3Nv6xQQ7kNvwEuWchG&_nc_oc=Adn9G5n7MnHSpL3wT0EEvEttlszomlG3rtTLdvvMtBPTklFRUG2Sh759cFVeXab8sy4&_nc_zt=23&_nc_ht=scontent.fcgm1-1.fna&_nc_gid=xk1QcJuF9rya1r2BPe-BUg&oh=00_AfsOPGo6zn5ymw--mMPB-9v1C2xzYU41VF06pu1zjL8R1g&oe=69A1F6CA" class="avatar avatar-sm me-3 border-radius-lg" alt="user default">
+                  @endif            </div>
           </div>
           <div class="col-auto my-auto">
             <div class="h-100">
@@ -76,11 +84,12 @@
           <div class="row">
             <div class="col-12 col-xl-4">
               <div class="card card-plain h-100">
-                <div class="card-header pb-0 p-3">
+                <div class="card-header pb-0 p-3 d-flex align-items-center">
+                  <i class="material-symbols-rounded me-2 text-primary">email</i>
                   <h6 class="mb-0">Email Address</h6>
                 </div>
                 <div class="card-body">
-                  <p class="font-size-14">
+                  <p class="font-size-14 text-primary">
                     {{ $youth->email }}
                   </p>
                 </div>
@@ -88,13 +97,14 @@
             </div>
             <div class="col-12 col-xl-4">
               <div class="card card-plain h-100">
-                <div class="card-header pb-0 p-3">
+                <div class="card-header pb-0 p-3 ">
                   <div class="row">
                     <div class="col-md-8 d-flex align-items-center">
+                      <i class="material-symbols-rounded me-2 text-primary">phone</i>
                       <h6 class="mb-0">Contact Number</h6>
                     </div>
                     <div class="card-body">
-                  <p class="font-size-14">
+                  <p class="font-size-14 text-primary">
                     {{ $youth->contact_number }}
                   </p>
                 </div>
@@ -108,10 +118,11 @@
                 <div class="card-header pb-0 p-3">
                   <div class="row">
                     <div class="col-md-8 d-flex align-items-center">
+                      <i class="material-symbols-rounded me-2 text-primary">groups</i>
                       <h6 class="mb-0">Register Count</h6>
                     </div>
                     <div class="card-body">
-                  <p class="font-size-14">
+                  <p class="font-size-14 text-primary">
                     {{ $youth->registered_count }}
                   </p>
                 </div>
@@ -125,10 +136,11 @@
                 <div class="card-header pb-0 p-3">
                   <div class="row">
                     <div class="col-md-8 d-flex align-items-center">
+                      <i class="material-symbols-rounded me-2 text-primary">location_city</i>
                       <h6 class="mb-0">Municipality</h6>
                     </div>
                     <div class="card-body">
-                  <p class="font-size-14">
+                  <p class="font-size-14 text-primary">
                     {{ $youth->municipality }}
                   </p>
                 </div>
@@ -142,10 +154,11 @@
                 <div class="card-header pb-0 p-3">
                   <div class="row">
                     <div class="col-md-8 d-flex align-items-center">
+                      <i class="material-symbols-rounded me-2 text-primary">location_on</i>
                       <h6 class="mb-0">Barangay</h6>
                     </div>
                     <div class="card-body">
-                  <p class="font-size-14">
+                  <p class="font-size-14 text-primary">
                     {{ $youth->brgy }}
                   </p>
                 </div>
@@ -159,11 +172,12 @@
                 <div class="card-header pb-0 p-3">
                   <div class="row">
                     <div class="col-md-8 d-flex align-items-center">
+                      <i class="material-symbols-rounded me-2 text-primary">public</i>
                       <h6 class="mb-0">Facebook Page</h6>
                     </div>
                     <div class="card-body">
-                  <p class="font-size-14">
-                    <a href="{{ $youth->facebook_page }}" target="_blank" class="text-decoration-none text-danger">
+                  <p class="font-size-14 text-primary">
+                    <a href="{{ $youth->facebook_page }}" target="_blank" class="text-decoration-none text-primary">
                       {{ $youth->facebook_page }}
                     </a>
                   </p>
@@ -178,11 +192,12 @@
                 <div class="card-header pb-0 p-3">
                   <div class="row">
                     <div class="col-md-8 d-flex align-items-center">
+                      <i class="material-symbols-rounded me-2 text-primary">description</i>
                       <h6 class="mb-0">LYDP Plan</h6>
                     </div>
                     <div class="card-body">
-                  <p class="font-size-14">
-                    <a href="{{ route('youth.view-lydp', $youth->id) }}" target="_blank" class="text-decoration-none text-danger">
+                  <p class="font-size-14 text-primary">
+                    <a href="{{ route('youth.view-lydp', $youth->id) }}" target="_blank" class="text-decoration-none text-primary">
                       View
                     </a> 
                   </p>
@@ -197,10 +212,11 @@
                 <div class="card-header pb-0 p-3">
                   <div class="row">
                     <div class="col-md-8 d-flex align-items-center">
+                      <i class="material-symbols-rounded me-2 text-primary">check_circle</i>
                       <h6 class="mb-0">LYDP Status</h6>
                     </div>
                     <div class="card-body">
-                  <p class="font-size-14">
+                  <p class="font-size-14 text-primary">
                     @if($youth->lydp_status == 'Pending')
                       <span class="badge bg-warning">Pending</span>
                     @elseif($youth->lydp_status == 'Approved')
@@ -233,15 +249,17 @@
                 <div class="card-header pb-0 p-3">
                   <div class="row">
                     <div class="col-md-8 d-flex align-items-center">
+                      <i class="material-symbols-rounded me-2 text-primary">groups</i>
                       <h6 class="mb-0">List of All Members</h6>
                     </div>
                     <div class="card-body">
-                  
+                  <p class="font-size-14 text-primary">
                   @foreach($lydcMembers as $member)
                     <tr>
                       <td class=" mb-0">{{ $member->name }}</td>
                     </tr>
                   @endforeach 
+                  </p>
                 </div>
                   </div>
                 </div>

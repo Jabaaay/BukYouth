@@ -129,6 +129,19 @@ class YouthController extends Controller
     }
 
     /**
+     * Display LYDO profile for public viewing.
+     */
+    public function showProfile($id)
+    {
+        $lydo = Youth::where('type', 'LYDO')->findOrFail($id);
+        
+        // Load related data if needed
+        $lydo->load(['members', 'images']);
+        
+        return view('lydo.profile', compact('lydo'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)

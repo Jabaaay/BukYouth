@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index']);
 
+// Public routes for viewing profiles
+Route::get('/lydo/{id}', [YouthController::class, 'showProfile'])->name('lydo.show-profile');
+Route::get('/sk-president/{id}', [SKController::class, 'showProfile'])->name('sk.show-profile');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

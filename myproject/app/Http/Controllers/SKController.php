@@ -60,6 +60,16 @@ class SKController extends Controller
     }
 
     /**
+     * Display SK President profile for public viewing.
+     */
+    public function showProfile($id)
+    {
+        $skPresident = Sk_President::findOrFail($id);
+        
+        return view('sk-president.profile', compact('skPresident'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
