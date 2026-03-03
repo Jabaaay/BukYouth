@@ -13,10 +13,12 @@
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
   <!-- Nucleo Icons -->
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap">
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Material Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   <!-- CSS Files -->
@@ -240,6 +242,80 @@
     * {
       font-family: 'Poppins', sans-serif;
     }
+
+    /* Interactive Social Media Icons */
+    .social-icon-facebook,
+    .social-icon-gmail,
+    .social-icon-instagram {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .social-icon-facebook {
+      background: linear-gradient(135deg, #1877f2 0%, #0c63d4 100%);
+      color: white;
+    }
+
+    .social-icon-facebook:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 20px rgba(24, 119, 242, 0.4);
+    }
+
+    .social-icon-gmail {
+      background: linear-gradient(135deg, #ea4335 0%, #c5221f 100%);
+      color: white;
+    }
+
+    .social-icon-gmail:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 20px rgba(234, 67, 53, 0.4);
+    }
+
+    .social-icon-instagram {
+      background: linear-gradient(135deg, #e4405f 0%, #833ab4 50%, #fd1d1d 100%);
+      color: white;
+    }
+
+    .social-icon-instagram:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 20px rgba(228, 64, 95, 0.4);
+    }
+
+    /* Footer Links Animation */
+    .footer .nav-link {
+      transition: all 0.3s ease;
+      position: relative;
+      padding-left: 0;
+    }
+
+    .footer .nav-link:hover {
+      color: #667eea !important;
+      transform: translateX(5px);
+    }
+
+    .footer .nav-link:hover i {
+      transform: scale(1.2);
+    }
+
+    /* Footer Section Animation */
+    .footer > .container > .row > div {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .footer > .container > .row > div:nth-child(1) { animation-delay: 0.1s; }
+    .footer > .container > .row > div:nth-child(2) { animation-delay: 0.2s; }
+    .footer > .container > .row > div:nth-child(3) { animation-delay: 0.3s; }
+    .footer > .container > .row > div:nth-child(4) { animation-delay: 0.4s; }
+    .footer > .container > .row > div:nth-child(5) { animation-delay: 0.5s; }
   </style>
 </head>
 
@@ -404,11 +480,98 @@
 
     <footer class="footer pt-5 mt-5">
     <div class="container">
-      <div class=" row">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div>
+              <img src="../assets/images/bp.png" alt="BukYouth Logo" width="100" height="100" class="me-2 animate-float">
+              <img src="../assets/images/nyc.png" alt="BukYouth Logo" width="100" height="100" class="me-2 animate-float">
+              <img src="../assets/images/image.png" alt="BukYouth Logo" width="100" height="100" class="me-2 animate-float">
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div>
+            <h6 class="text-sm text-dark font-weight-bolder">Social Media</h6>
+            <ul class="flex-column nav">
+              <li class="nav-item">
+                 <a href="https://www.facebook.com/profile.php?id=100072118915376" target="_blank" class="social-icon-facebook">
+                <i class="fa fa-facebook-f"></i>
+              </a>
+              <a href="mailto:youthoffice@bukidnon.gov.ph" target="_blank" class="social-icon-gmail">
+                <i class="fa fa-envelope"></i>
+              </a>
+              <a href="https://www.instagram.com/bukidnonyouth" target="_blank" class="social-icon-instagram">
+                <i class="fa fa-instagram"></i>
+              </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4">
+          <div>
+            <h6 class="text-sm text-dark font-weight-bolder">Quick Links</h6>
+            <ul class="flex-column nav">
+              <li class="nav-item">
+                <a href="{{ route('lydo.show-profile', '1') }}" class="nav-link text-muted">
+                  LYDO Organizations
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('sk.show-profile', '1') }}" class="nav-link text-muted">
+                  SK Presidents
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('login') }}" class="nav-link text-muted">
+                  Login
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-muted">
+                  Events
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div>
+            <h6 class="text-sm text-dark font-weight-bolder">Contact Info</h6>
+            <ul class="flex-column nav">
+              <li class="nav-item">
+                <a href="mailto:youthoffice@bukidnon.gov.ph" class="nav-link text-muted">
+                  youthoffice@bukidnon.gov.ph
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tel:+639171678932" class="nav-link text-muted">
+                  +63 917 167 8932
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-muted">
+                  Malaybalay City, Bukidnon
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link text-muted">
+                  Mon-Fri: 8AM-5PM
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>This is where we are located</h3>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3754.0597336967026!2d125.12810957745565!3d8.15464777092823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32ffaa2f2abaeca7%3A0x500d3b5f04595a9e!2sOld%20Provincial%20Hospital%20Bulding%2C%20Malaybalay%20City%2C%20Bukidnon!5e1!3m2!1sen!2sph!4v1772505932206!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
         <div class="col-12">
-          <div class="text-center">
-            <p class="text-dark my-4 text-sm font-weight-normal">
-              All rights reserved. Copyright 2026 Bukidnon Youth.
+          <div class="text-center mt-4">
+            <p class="text-dark text-sm">
+              © <script>document.write(new Date().getFullYear())</script> BukYouth. All rights reserved. | 
+              <a href="#" class="text-primary">Privacy Policy</a> | 
+              <a href="#" class="text-primary">Terms of Service</a>
             </p>
           </div>
         </div>

@@ -92,9 +92,9 @@
             <div class="d-flex px-2 py-1">
                 <div>
                   @if(isset($imagePath[$youth->id]))
-                    <img src="{{ $imagePath[$youth->id] }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                    <img src="{{ $imagePath[$youth->id] }}" class="avatar avatar-sm me-3 border-radius-lg" alt="{{ $youth->name }} profile image">
                    @else
-                    <img src="../assets/images/image.png" class="avatar avatar-sm me-3 border-radius-lg" alt="user1"><img src="https://scontent.fcgm1-1.fna.fbcdn.net/v/t39.30808-6/618097911_2626094681097067_8038210258107961028_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeHC-nA98--AWtuvshzTWTiJDgXlZhB_1JYOBeVmEH_Uloeh4LiZ-bTuKR7KNN5h_0-Pm0KyJHGRyRDX_Ucnw-vL&_nc_ohc=dndpS3Nv6xQQ7kNvwEuWchG&_nc_oc=Adn9G5n7MnHSpL3wT0EEvEttlszomlG3rtTLdvvMtBPTklFRUG2Sh759cFVeXab8sy4&_nc_zt=23&_nc_ht=scontent.fcgm1-1.fna&_nc_gid=xk1QcJuF9rya1r2BPe-BUg&oh=00_AfsOPGo6zn5ymw--mMPB-9v1C2xzYU41VF06pu1zjL8R1g&oe=69A1F6CA" class="avatar avatar-sm me-3 border-radius-lg" alt="user default">
+                    <img src="../assets/images/image.png" class="avatar avatar-sm me-3 border-radius-lg" alt="Default profile image">
                   @endif
                 </div>
 

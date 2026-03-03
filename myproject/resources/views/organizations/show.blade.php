@@ -26,14 +26,14 @@
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
   <!-- Nucleo Icons -->
-  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <!-- Material Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.2.0" rel="stylesheet" />
+  <link id="pagestyle" href="{{ asset('assets/css/material-dashboard.css?v=3.2.0') }}" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -63,11 +63,12 @@
         <div class="row gx-4 mb-2">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-@if(isset($imagePath[$youth->id]))
-                    <img src="{{ $imagePath[$youth->id] }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                  @if(isset($imagePath[$youth->id]))
+                    <img src="{{ $imagePath[$youth->id] }}" class="avatar avatar-sm me-3 border-radius-lg" style="width: 100%; height: 100%; object-fit: cover;" alt="{{ $youth->name }} profile image">
                    @else
-                    <img src="../assets/images/image.png" class="avatar avatar-sm me-3 border-radius-lg" alt="user1"><img src="https://scontent.fcgm1-1.fna.fbcdn.net/v/t39.30808-6/618097911_2626094681097067_8038210258107961028_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeHC-nA98--AWtuvshzTWTiJDgXlZhB_1JYOBeVmEH_Uloeh4LiZ-bTuKR7KNN5h_0-Pm0KyJHGRyRDX_Ucnw-vL&_nc_ohc=dndpS3Nv6xQQ7kNvwEuWchG&_nc_oc=Adn9G5n7MnHSpL3wT0EEvEttlszomlG3rtTLdvvMtBPTklFRUG2Sh759cFVeXab8sy4&_nc_zt=23&_nc_ht=scontent.fcgm1-1.fna&_nc_gid=xk1QcJuF9rya1r2BPe-BUg&oh=00_AfsOPGo6zn5ymw--mMPB-9v1C2xzYU41VF06pu1zjL8R1g&oe=69A1F6CA" class="avatar avatar-sm me-3 border-radius-lg" alt="user default">
-                  @endif            </div>
+                    <img src="{{ asset('assets/images/image.png') }}" class="avatar avatar-sm me-3 border-radius-lg" style="width: 100%; height: 100%; object-fit: cover;" alt="user1">
+                  @endif            
+                </div>
           </div>
           <div class="col-auto my-auto">
             <div class="h-100">
@@ -264,7 +265,7 @@
                   </div>
                 </div>
              
-              </div>
+              
             </div>
           </div>
         </div>
@@ -273,10 +274,10 @@
   </main>
  
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+  <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -289,7 +290,7 @@
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/material-dashboard.min.js?v=3.2.0"></script>
+  <script src="{{ asset('assets/js/material-dashboard.min.js?v=3.2.0') }}"></script>
   <script>
   document.getElementById('typeFilter').addEventListener('change', function () {
     const selected = this.value;
