@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sk_President;
+use App\Models\SkImage;
+use Cloudinary\Configuration\Configuration;
+use Cloudinary\Api\Upload\UploadApi;
 
 class SKController extends Controller
 {
@@ -35,16 +38,49 @@ class SKController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:sk,email',
             'contact_number' => 'required|string|max:20',
-            'type' => 'SK President', // Set the type to 'SK President' for all entries created through this method
             'municipality' => 'required|string|max:255',
-            'brgy' => 'required|string|max:255'
-
-            
-
+            'brgy' => 'required|string|max:255',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
-        // Create a new SK President record in the database
-        Sk_President::create($request->all());
+        $sk = Sk_President::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'contact_number' => $request->contact_number,
+            'municipality' => $request->municipality,
+            'brgy' => $request->brgy,
+            'type' => 'SK President'
+        ]);
+
+        // configure Cloudinary
+        Configuration::instance([
+            'cloud' => [
+                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                'api_key' => env('CLOUDINARY_API_KEY'),
+                'api_secret' => env('CLOUDINARY_API_SECRET'),
+            ],
+            'url' => ['secure' => true],
+        ]);
+        
+        // upload photo if exists
+    if ($request->hasFile('photo')) {
+        try {
+            $upload = (new UploadApi())->upload(
+                $request->file('photo')->getRealPath(),
+                ['folder' => 'sk_profiles']
+            );
+
+            SkImage::create([
+                'sk_id' => $sk->id,
+                'image_url' => $upload['secure_url'],
+                'public_id' => $upload['public_id'],
+                'is_primary' => true
+            ]);
+
+        } catch (\Exception $e) {
+            return back()->with('error', 'Image upload failed: '.$e->getMessage());
+        }
+    }
 
         // Redirect back to the youth index page with a success message
         return redirect()->route('youth.index')->with('success', 'SK President added successfully!');
@@ -86,7 +122,7 @@ class SKController extends Controller
         // Validate the incoming request data
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:youth,email,' . $id,
+            'email' => 'required|email|unique:youth,email,' . $sk->$id,
             'contact_number' => 'required|string|max:20'
         ]);
 

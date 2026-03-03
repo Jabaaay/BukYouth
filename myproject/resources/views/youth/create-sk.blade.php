@@ -67,11 +67,16 @@
                     </div>
                 </div>
                 <div class="card-body px-4 pb-4">
-                    <form action="{{ route('youth.store-sk') }}" method="POST">
-                        @csrf
+                    <form action="{{ route('youth.store-sk') }}" method="POST" enctype="multipart/form-data">
+                        @csrf   
                         <div class="mb-3">
                             <label for="name" class="form-label">Name of SK President</label>
                             <input type="text" name="name" id="name" class="form-control border" value="{{ old('name') }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="photo" class="form-label">Add Profile Picture</label>
+                            <input type="file" name="photo" id="photo" class="form-control border">
                         </div>
 
                         <div class="mb-3">

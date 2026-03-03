@@ -18,4 +18,13 @@ class Sk_President extends Model
         'brgy'
     ];
 
+     public function images()
+    {
+        return $this->hasMany(SkImage::class, 'sk_id');
+    }
+
+    public function primaryImage()
+    {
+        return $this->hasOne(SkImage::class, 'sk_id')->where('is_primary', true);
+    }
 }
