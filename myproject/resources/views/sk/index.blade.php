@@ -71,7 +71,9 @@
               </div>
             </div>
 
-            
+            <div class="card-body">
+                  
+
             <div class="card-body px-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
@@ -91,8 +93,12 @@
         <td>
             <div class="d-flex px-2 py-1">
               <div>
-                <img src="https://scontent.fcgm1-1.fna.fbcdn.net/v/t1.6435-9/119697873_3302888116492694_7904018478299583368_n.jpg?stp=c0.62.563.563a_dst-jpg_s206x206_tt6&_nc_cat=102&ccb=1-7&_nc_sid=5df8b4&_nc_eui2=AeHABpx6Bd_ve9wiEuBjHI39sPHG3Uw71Lew8cbdTDvUtyeYPkAB2xh36z7qdPde_rEHmPza12EEABbozQDP6j9O&_nc_ohc=Q8ixCACJgEQQ7kNvwF9IMVq&_nc_oc=AdlJkJXpD7IYz2vPlcg6mAQtKqVWRulEsEhDs2DxRifZIl9v0yObR2Ta_aj-sPeZo90&_nc_zt=23&_nc_ht=scontent.fcgm1-1.fna&_nc_gid=UjK0NB3GP7n98-bCdrKoUQ&oh=00_Afsj565N54OPK2XWSgUbG9H90owrt8MldZ0jp4pCAagFyQ&oe=69C3749A" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-              </div>
+                  @if(isset($imagePath[$youth->id]))
+                    <img src="{{ $imagePath[$youth->id] }}" class="avatar avatar-sm me-3 border-radius-lg" alt="{{ $youth->name }} profile image">
+                   @else
+                    <img src="../assets/images/image.png" class="avatar avatar-sm me-3 border-radius-lg" alt="Default profile image">
+                  @endif
+                </div>
                 <div class="d-flex flex-column justify-content-center">
                     <h6 class="mb-0 text-sm">{{ $youth->name }}</h6>
                     <p class="text-xs text-secondary mb-0">{{ $youth->email }}</p>
@@ -136,6 +142,15 @@
         </td>
     </tr>
 @endforeach
+
+<tr>
+  <td colspan="5" class="text-center">
+   
+  @if($sk->isEmpty())
+    <p>No data available</p>
+  @endif
+  </td>
+</tr>
 </tbody>
 
 
@@ -148,6 +163,25 @@
       
      
     </div>
+
+    @if (session('success'))
+     <div class="position-fixed bottom-1 end-1 z-index-2">
+        <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
+          <div class="toast-header border-0">
+            <i class="material-symbols-rounded text-success me-2">
+              check
+            </i>
+            <span class="me-auto font-weight-bold"> {{ session('success') }}</span>
+       
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+          </div>
+          <hr class="horizontal dark m-0">
+          <div class="toast-body">
+            {{ session('success') }}
+          </div>
+        </div>
+      </div>
+      @endif
   </main>
  
   <!--   Core JS Files   -->
@@ -170,22 +204,21 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.2.0"></script>
   <script>
-  document.getElementById('typeFilter').addEventListener('change', function () {
-    const selected = this.value;
-    const rows = document.querySelectorAll('tbody tr');
-
-    rows.forEach(row => {
-      const type = row.getAttribute('data-type');
-
-      if (selected === 'all' || type === selected) {
-        row.style.display = '';
-      } else {
-        row.style.display = 'none';
-      }
+   // Show toast notification if success message exists
+    document.addEventListener('DOMContentLoaded', function() {
+        @if (session('success'))
+        var successToast = new bootstrap.Toast(document.getElementById('successToast'));
+        successToast.show();
+        
+        // Auto-hide after 5 seconds
+        setTimeout(function() {
+            successToast.hide();
+        }, 5000);
+        @endif
     });
-  });
 </script>
 
 </body>
 
 </html>
+

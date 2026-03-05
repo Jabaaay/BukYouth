@@ -39,17 +39,23 @@ class YouthController extends Controller
         // Validate the incoming request data
         $request->validate([
             'name' => 'required|string|max:255',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Optional photo upload
-            'email' => 'required|email|unique:youth,email',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Optional photo upload
+            'email' => 'required|email|unique:youth,email|ends_with:@gmail.com',  // Only allow @gmail.com emails
             'contact_number' => 'required|string|max:20',
             'facebook_page' => 'nullable|string|max:255',
             'registered_count' => 'required|integer',
             'lydc_members' => 'nullable|string',
-            'file_plan' => 'required|file|mimes:pdf,doc,docx|max:10240', // Max 10MB
+            'file_plan' => 'nullable|file|mimes:pdf,doc,docx|max:10240', // Optional file upload
             'lydp_status' => 'required|in:Pending,Approved,Rejected',
             'municipality' => 'required|string|max:255',
             'brgy' => 'required|string|max:255'
         ]);
+
+        
+        if($request->email != $request->email)
+        {
+            return redirect()->back()->with('error', 'Email must be a Gmail account!');
+        }
 
         // Check if the municipality already exists
         if (Youth::where('municipality', $request->municipality)->exists()) {
@@ -164,8 +170,7 @@ class YouthController extends Controller
             'registered_count' => 'required|integer',
             'file_plan' => 'nullable|file|mimes:pdf,doc,docx|max:10240', // Optional file update
             'lydp_status' => 'required|in:Pending,Approved,Rejected',
-            'municipality' => 'required|string|max:255',
-            'brgy' => 'required|string|max:255'
+            
         ]);
 
         // Find the existing LYDO record
@@ -181,14 +186,19 @@ class YouthController extends Controller
             $file = $request->file('file_plan');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('file_plans', $fileName, 'public');
-            $request->merge(['file_plan' => $filePath]);
+            $requestData = $request->all();
+            $requestData['file_plan'] = $filePath;
+        } else {
+            // Keep existing file_plan if no new file uploaded
+            $requestData = $request->all();
+            unset($requestData['file_plan']); // Remove file_plan from request to keep existing value
         }
 
         // Update the record
-        $youth->update($request->all());
+        $youth->update($requestData);
 
         // Redirect back to the youth index page with a success message
-        return redirect()->route('youth.index')->with('success', 'LYDO updated successfully!');
+        return redirect()->route('organizations.index')->with('success', 'LYDO updated successfully!');
     }
 
     /**
@@ -238,6 +248,6 @@ class YouthController extends Controller
         
         $youth->delete();
 
-        return redirect()->route('youth.index')->with('success', 'LYDO deleted successfully!');
+        return redirect()->route('organizations.index')->with('success', 'LYDO deleted successfully!');
     }
 }

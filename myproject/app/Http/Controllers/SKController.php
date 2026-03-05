@@ -16,7 +16,8 @@ class SKController extends Controller
     public function index()
     {
         $sk = Sk_President::all();
-        return view('sk.index', compact('sk'));
+        $imagePath = SkImage::where('is_primary', true)->pluck('image_url', 'sk_id')->toArray();
+        return view('sk.index', compact('sk', 'imagePath'));
     }
 
     /**
@@ -40,7 +41,7 @@ class SKController extends Controller
             'contact_number' => 'required|string|max:20',
             'municipality' => 'required|string|max:255',
             'brgy' => 'required|string|max:255',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg'
         ]);
 
         $sk = Sk_President::create([
@@ -92,7 +93,8 @@ class SKController extends Controller
     public function show(string $id)
     {
         $sk = Sk_President::findOrFail($id);
-        return view('sk.show', compact('sk'));
+        $imagePath = SkImage::where('is_primary', true)->pluck('image_url', 'sk_id')->toArray();
+        return view('sk.show', compact('sk', 'imagePath'));
     }
 
     /**
@@ -111,7 +113,8 @@ class SKController extends Controller
     public function edit(string $id)
     {
         $sk = Sk_President::findOrFail($id);
-        return view('sk.edit', compact('sk'));
+        $imagePath = SkImage::where('is_primary', true)->pluck('image_url', 'sk_id')->toArray();
+        return view('sk.edit', compact('sk', 'imagePath'));
     }
 
     /**
@@ -122,7 +125,7 @@ class SKController extends Controller
         // Validate the incoming request data
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:youth,email,' . $sk->$id,
+            'email' => 'required|email|unique:sk,email,' . $id,
             'contact_number' => 'required|string|max:20'
         ]);
 

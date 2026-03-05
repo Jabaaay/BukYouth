@@ -573,6 +573,29 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.2.0"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script>
+                    function confirmDelete(event){
+                        swal({
+                            title: "Are you sure?",
+                            text: "Once deleted, you will not be able to recover this youth!",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                event.closest('form').submit();
+                                swal("Poof! Your youth has been deleted!", {
+                                    icon: "success",
+                                });
+                            }
+                        });
+                        return false;
+                    }
+                </script>
 </body>
+
 
 </html>

@@ -64,9 +64,9 @@
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
                   @if(isset($imagePath[$youth->id]))
-                    <img src="{{ $imagePath[$youth->id] }}" class="avatar avatar-sm me-3 border-radius-lg" style="width: 100%; height: 100%; object-fit: cover;" alt="{{ $youth->name }} profile image">
+                    <img src="{{ $imagePath[$youth->id] }}" class="" alt="{{ $youth->name }} profile image">
                    @else
-                    <img src="{{ asset('assets/images/image.png') }}" class="avatar avatar-sm me-3 border-radius-lg" style="width: 100%; height: 100%; object-fit: cover;" alt="user1">
+                    <img src="{{ asset('assets/images/image.png') }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                   @endif            
                 </div>
           </div>
@@ -179,7 +179,7 @@
                     <div class="card-body">
                   <p class="font-size-14 text-primary">
                     <a href="{{ $youth->facebook_page }}" target="_blank" class="text-decoration-none text-primary">
-                      {{ $youth->facebook_page }}
+                      {{ $youth->facebook_page ?? 'Not Added yet' }}
                     </a>
                   </p>
                 </div>
@@ -198,9 +198,13 @@
                     </div>
                     <div class="card-body">
                   <p class="font-size-14 text-primary">
+                    @if($youth->file_plan)
                     <a href="{{ route('youth.view-lydp', $youth->id) }}" target="_blank" class="text-decoration-none text-primary">
                       View
                     </a> 
+                    @else
+                    <p class="font-size-14 text-primary">No LYDP Plan</p>
+                    @endif
                   </p>
                 </div>
                   </div>

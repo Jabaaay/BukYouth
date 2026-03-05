@@ -64,10 +64,6 @@
         <div class="col-12">
             
             <div class="card my-4">
-
-            @error('name')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
                
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-dark shadow-dark border-radius-lg pt-4 pb-3 d-flex align-items-center justify-content-between px-3">
@@ -103,7 +99,7 @@
 
                          <div class="mb-3">
                             <label for="facebook_page" class="form-label">Facebook Page (Optional)</label>
-                            <input type="text" name="facebook_page" id="facebook_page" class="form-control border" value="{{ old('facebook_page') }}" required>
+                            <input type="text" name="facebook_page" id="facebook_page" class="form-control border" value="{{ old('facebook_page') }}">
                         </div>
                         <div class="mb-3">
                             <label for="registered_count" class="form-label">Number of Register in LYDC</label>
@@ -130,8 +126,8 @@
                         </div>
 
                          <div class="mb-3">
-                            <label for="file_plan" class="form-label">Local Youth Development Plan</label>
-                            <input type="file" name="file_plan" id="file_plan" class="form-control border" accept=".pdf,.doc,.docx" required>
+                            <label for="file_plan" class="form-label">Local Youth Development Plan (Optional)</label>
+                            <input type="file" name="file_plan" id="file_plan" class="form-control border" accept=".pdf,.doc,.docx">
                             <small class="text-muted">Accepted formats: PDF, DOC, DOCX (Max: 10MB)</small>
                         </div>
 
@@ -182,8 +178,9 @@
                             </select>
                         </div>
 
-                        <button type="submit" class="btn bg-gradient-dark">Save</button>
-                        <a href="{{ route('youth.index') }}" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn bg-gradient-dark mb-0 toast-btn" data-toast="successToast">Save</button>
+
+                        <a href="{{ route('youth.index') }}" class="btn btn-secondary mb-0">Cancel</a>
                     </form>
                 </div>
             </div>
@@ -196,6 +193,24 @@
       
      
     </div>
+ @if (session('success'))
+     <div class="position-fixed bottom-1 end-1 z-index-2">
+        <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
+          <div class="toast-header border-0">
+            <i class="material-symbols-rounded text-success me-2">
+              check
+            </i>
+            <span class="me-auto font-weight-bold"> {{ session('success') }}</span>
+       
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+          </div>
+          <hr class="horizontal dark m-0">
+          <div class="toast-body">
+            {{ session('success') }}
+          </div>
+        </div>
+      </div>
+      @endif
   </main>
  
   <!--   Core JS Files   -->

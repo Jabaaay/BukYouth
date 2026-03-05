@@ -157,6 +157,24 @@
       
      
     </div>
+        @if (session('success'))
+     <div class="position-fixed bottom-1 end-1 z-index-2">
+        <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
+          <div class="toast-header border-0">
+            <i class="material-symbols-rounded text-success me-2">
+              check
+            </i>
+            <span class="me-auto font-weight-bold"> {{ session('success') }}</span>
+       
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+          </div>
+          <hr class="horizontal dark m-0">
+          <div class="toast-body">
+            {{ session('success') }}
+          </div>
+        </div>
+      </div>
+      @endif
   </main>
  
   <!--   Core JS Files   -->
@@ -193,6 +211,22 @@
       }
     });
   });
+
+</script>
+
+<script>
+   // Show toast notification if success message exists
+    document.addEventListener('DOMContentLoaded', function() {
+        @if (session('success'))
+        var successToast = new bootstrap.Toast(document.getElementById('successToast'));
+        successToast.show();
+        
+        // Auto-hide after 5 seconds
+        setTimeout(function() {
+            successToast.hide();
+        }, 5000);
+        @endif
+    });
 </script>
 
 </body>

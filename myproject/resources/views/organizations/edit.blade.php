@@ -67,7 +67,7 @@
 
 
                     <div class="card-body px-4 pb-4">
-                        <form action="{{ route('youth.update', $youth->id) }}" method="POST">
+                        <form action="{{ route('youth.update', $youth->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -82,20 +82,49 @@
                             <label for="contact_number" class="form-label">Contact Number</label>
                             <input type="text" name="contact_number" id="contact_number" class="form-control border" value="{{ old('contact_number', $youth->contact_number) }}" required>
                         </div>
-                         <div class="mb-3">
-                            <label for="registered_count" class="form-label">Registered Count</label>
+                        <div class="mb-3">
+                            <label for="facebook_page" class="form-label">Facebook Page (Optional)</label>
+                            <input type="text" name="facebook_page" id="facebook_page" class="form-control border" value="{{ old('facebook_page', $youth->facebook_page) }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="registered_count" class="form-label">Number of Register in LYDC</label>
                             <input type="text" name="registered_count" id="registered_count" class="form-control border" value="{{ old('registered_count', $youth->registered_count) }}" required>
                         </div>
                          <div class="mb-3">
-                            <label for="lydp_plan" class="form-label">LYDP Plan</label>
-                            <textarea name="lydp_plan" id="lydp_plan" class="form-control border">{{ old('lydp_plan', $youth->lydp_plan) }}</textarea>
+                            <label for="file_plan" class="form-label">Local Youth Development Plan</label>
+                            @if($youth->file_plan)
+                                <div class="mb-2">
+                                    <small class="text-muted">Current file:</small>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <a href="{{ route('youth.view-lydp', $youth->id) }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                            <i class="material-symbols-rounded me-1">visibility</i> View
+                                        </a>
+                                        <a href="{{ route('youth.download-lydp', $youth->id) }}" class="btn btn-sm btn-outline-success">
+                                            <i class="material-symbols-rounded me-1">download</i> Download
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                            <input type="file" name="file_plan" id="file_plan" class="form-control border" accept=".pdf,.doc,.docx">
+                            <small class="text-muted">Accepted formats: PDF, DOC, DOCX (Max: 10MB)</small>
                         </div>
                          <div class="mb-3">
                             <label for="lydp_status" class="form-label">LYDP Status</label>
                             <select class="form-control border" name="lydp_status" id="lydp_status">
-                                <option value="Approved" {{ old('lydp_status', $youth->lydp_status) == 'Approved' ? 'selected' : '' }}>Approved</option>
-                                <option value="Rejected" {{ old('lydp_status', $youth->lydp_status) == 'Rejected' ? 'selected' : '' }}>Rejected</option>
+                              <option value="Pending" {{ old('lydp_status', $youth->lydp_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
+                              <option value="Approved" {{ old('lydp_status', $youth->lydp_status) == 'Approved' ? 'selected' : '' }}>Approved</option>
+                              <option value="Rejected" {{ old('lydp_status', $youth->lydp_status) == 'Rejected' ? 'selected' : '' }}>Rejected</option>
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="municipality" class="form-label">Municipality</label>
+                            <input type="text" name="municipality" id="municipality" class="form-control border" value="{{ old('municipality', $youth->municipality) }}" readonly>
+                            <small class="text-muted">This field is not editable</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="brgy" class="form-label">Barangay</label>
+                            <input type="text" name="brgy" id="brgy" class="form-control border" value="{{ old('brgy', $youth->brgy) }}" readonly>
+                            <small class="text-muted">This field is not editable</small>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                         <button type="button" class="btn btn-secondary"> <a href="{{ route('organizations.index') }}" class="text-white">Cancel</a></button>

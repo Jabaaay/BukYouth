@@ -62,7 +62,27 @@
 
 
 <div class="container-fluid py-2">
+                    @if (session('success'))
+     <div class="position-fixed bottom-1 end-1 z-index-2">
+        <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
+          <div class="toast-header border-0">
+            <i class="material-symbols-rounded text-success me-2">
+              check
+            </i>
+            <span class="me-auto font-weight-bold"> {{ session('success') }}</span>
+       
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+          </div>
+          <hr class="horizontal dark m-0">
+          <div class="toast-body">
+            {{ session('success') }}
+          </div>
+        </div>
+      </div>
+      @endif
   <div class="row">
+
+
 
     <!-- Card 1: Add LYDO -->
     <div class="col-md-6 mb-4">
@@ -102,6 +122,25 @@
       
      
     </div>
+
+     @if (session('success'))
+     <div class="position-fixed bottom-1 end-1 z-index-2">
+        <div class="toast fade hide p-2 bg-white" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
+          <div class="toast-header border-0">
+            <i class="material-symbols-rounded text-success me-2">
+              check
+            </i>
+            <span class="me-auto font-weight-bold"> {{ session('success') }}</span>
+       
+            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+          </div>
+          <hr class="horizontal dark m-0">
+          <div class="toast-body">
+            {{ session('success') }}
+          </div>
+        </div>
+      </div>
+      @endif
   </main>
  
   <!--   Core JS Files   -->
@@ -122,6 +161,30 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.min.js?v=3.2.0"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
+  <script>
+    // Show toast notification if success message exists
+    document.addEventListener('DOMContentLoaded', function() {
+        @if (session('success'))
+        var successToast = new bootstrap.Toast(document.getElementById('successToast'));
+        successToast.show();
+        
+        // Auto-hide after 5 seconds
+        setTimeout(function() {
+            successToast.hide();
+        }, 5000);
+        @endif
+    });
+    
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
 </body>
 
 </html>

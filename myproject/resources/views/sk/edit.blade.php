@@ -67,7 +67,7 @@
 
 
                     <div class="card-body px-4 pb-4">
-                        <form action="{{ route('sk.update', $sk->id) }}" method="POST">
+                        <form action="{{ route('sk.update', $sk->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -82,7 +82,16 @@
                             <label for="contact_number" class="form-label">Contact Number</label>
                             <input type="text" name="contact_number" id="contact_number" class="form-control border" value="{{ old('contact_number', $sk->contact_number) }}" required>
                         </div>
-                        
+                        <div class="mb-3">
+                            <label for="municipality" class="form-label">Municipality</label>
+                            <input type="text" name="municipality" id="municipality" class="form-control border" value="{{ old('municipality', $sk->municipality) }}" readonly>
+                            <small class="text-muted">This field is not editable</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="brgy" class="form-label">Barangay</label>
+                            <input type="text" name="brgy" id="brgy" class="form-control border" value="{{ old('brgy', $sk->brgy) }}" readonly>
+                            <small class="text-muted">This field is not editable</small>
+                        </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                         <button type="button" class="btn btn-secondary"> <a href="{{ route('sk.index') }}" class="text-white">Cancel</a></button>
                         </form>

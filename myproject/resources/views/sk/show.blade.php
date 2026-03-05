@@ -64,8 +64,12 @@
       <div class="card card-body mx-2 mx-md-2 mt-n6">
         <div class="row gx-4 mb-2">
           <div class="col-auto">
-            <div class="avatar avatar-xl position-relative">
-              <img src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+            <div class="">
+                  @if(isset($imagePath[$sk->id]))
+                    <img src="{{ $imagePath[$sk->id] }}" class="avatar avatar-sm me-3 border-radius-lg" alt="{{ $sk->name }} profile image">
+                   @else
+                    <img src="../assets/images/image.png" class="avatar avatar-sm me-3 border-radius-lg" alt="Default profile image">
+                  @endif
             </div>
           </div>
           <div class="col-auto my-auto">

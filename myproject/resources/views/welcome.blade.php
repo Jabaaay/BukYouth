@@ -239,6 +239,38 @@
         visibility: hidden;
       }
     }
+
+    /* Modern Loader */
+    .loader {
+      width: 50px;
+      aspect-ratio: 1;
+      display: grid;
+      border: 4px solid #0000;
+      border-radius: 50%;
+      border-color: #fff #0000;
+      animation: l16 1s infinite linear;
+      margin: 0 auto 20px;
+    }
+    .loader::before,
+    .loader::after {    
+      content: "";
+      grid-area: 1/1;
+      margin: 2px;
+      border: inherit;
+      border-radius: 50%;
+    }
+    .loader::before {
+      border-color: #f03355 #0000;
+      animation: inherit; 
+      animation-duration: .5s;
+      animation-direction: reverse;
+    }
+    .loader::after {
+      margin: 8px;
+    }
+    @keyframes l16 { 
+      100%{transform: rotate(1turn)}
+    }
     * {
       font-family: 'Poppins', sans-serif;
     }
@@ -316,6 +348,8 @@
     .footer > .container > .row > div:nth-child(3) { animation-delay: 0.3s; }
     .footer > .container > .row > div:nth-child(4) { animation-delay: 0.4s; }
     .footer > .container > .row > div:nth-child(5) { animation-delay: 0.5s; }
+
+    
   </style>
 </head>
 
@@ -335,9 +369,7 @@
               <ul class="navbar-nav navbar-nav-hover ms-auto">
                 
               <li class="nav-item me-2">
-               <div class="input-group input-group-outline">
-                            <input class="form-control text-black search-animate" name="text" type="text" placeholder="Search organizations..." required />
-                          </div>
+         
               </li>
               <br>
                 <li class="nav-item">
@@ -562,7 +594,7 @@
           </div>
         </div>
 
-        <h3>This is where we are located</h3>
+        <h3 class="text-center animate-fadeInUp animate-delay-1">This is where we are located</h3>
 
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3754.0597336967026!2d125.12810957745565!3d8.15464777092823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32ffaa2f2abaeca7%3A0x500d3b5f04595a9e!2sOld%20Provincial%20Hospital%20Bulding%2C%20Malaybalay%20City%2C%20Bukidnon!5e1!3m2!1sen!2sph!4v1772505932206!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
@@ -580,3 +612,5 @@
   </footer>
   
   </body>
+
+</html>
